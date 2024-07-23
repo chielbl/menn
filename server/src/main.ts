@@ -21,8 +21,11 @@ async function main() {
         process.on(signal, () => {
           console.info(`ℹ️  ${signal} signal received.`);
           s.close((err) => {
-            if (err) console.error('❌ server close failed ', err);
-            console.error('ℹ️  server closed.');
+            if (err) {
+              console.error('❌ server close failed ', err);
+            } else {
+              console.info('ℹ️  server closed.');
+            }
             process.exit(err ? 1 : 0);
           });
         });
