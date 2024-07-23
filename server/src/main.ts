@@ -1,41 +1,21 @@
-import { createServer } from './server';
-import mongoose from 'mongoose';
+import { createServer, stopServer } from './server';
+import { connectDatabase } from './shared';
 
-const port = process.env.PORT;
-const databaseUrl = process.env.DATABASE_URL || '';
-
-async function main() {
+(async function startServer() {
+  const port = process.env.PORT || '8000';
   const server = await createServer();
 
-  mongoose
-    .connect(databaseUrl)
-    .then(() => {
-      const s = server.listen(port, () => {
-        console.info(`ℹ️  Server is running on port ${port}`);
-      });
+  try {
+    const databaseConnection = await connectDatabase();
 
-      // handle correct shutdown
-      const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM'];
+    if (!databaseConnection) throw new Error('No database connection!');
 
-      for (const signal of signals) {
-        process.on(signal, () => {
-          console.info(`ℹ️  ${signal} signal received.`);
-          s.close((err) => {
-            if (err) {
-              console.error('❌ server close failed ', err);
-            } else {
-              console.info('ℹ️  server closed.');
-            }
-            process.exit(err ? 1 : 0);
-          });
-        });
-      }
-    })
-    .catch((err) => {
-      console.error('❌ failed to connect to the database!', err);
+    const s = server.listen(port, () => {
+      console.info(`ℹ️  Server is running on port ${port}`);
     });
-}
 
-main().catch((err) => {
-  console.error('❌ Server failed to start ', err);
-});
+    stopServer(s, databaseConnection);
+  } catch (error) {
+    throw error;
+  }
+})().catch((error) => console.error('❌ Server failed to start', error));
