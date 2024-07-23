@@ -1,7 +1,7 @@
 import express, { type Express } from 'express';
 import { security } from './shared';
 import { Server } from 'http';
-import type { Connection, Mongoose } from 'mongoose';
+import type { Connection } from 'mongoose';
 
 export const createServer = async (): Promise<Express> => {
   const server = express();
