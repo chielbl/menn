@@ -10,7 +10,7 @@ export const createServer = async (): Promise<Express> => {
   server.use(express.json());
   server.use(security);
   server.use((req, res, next) => {
-    log.info(req.path, req.method);
+    log.info({ path: req.path, method: req.method });
     next();
   });
 

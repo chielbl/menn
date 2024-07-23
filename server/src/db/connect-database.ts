@@ -1,5 +1,5 @@
+import { log } from '@/shared';
 import mongoose from 'mongoose';
-import { log } from './log';
 
 const databaseUrl = process.env.DATABASE_URL || '';
 

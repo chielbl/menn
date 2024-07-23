@@ -1,5 +1,6 @@
+import { connectDatabase } from './db';
 import { createServer, stopServer } from './server';
-import { connectDatabase, log } from './shared';
+import { log } from './shared';
 
 (async function startServer() {
   const port = process.env.PORT || '8000';
