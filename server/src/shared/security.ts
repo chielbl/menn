@@ -5,7 +5,6 @@ export const contentSecurityPolicy: HelmetOptions['contentSecurityPolicy'] = {
     blockAllMixedContent: '',
     objectSrc: ["'none'"],
     baseUri: ["'none'"],
-    frameAncestors: ["'self'"],
     defaultSrc: ["'self'"],
   },
 };
