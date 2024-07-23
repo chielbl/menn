@@ -1,11 +1,11 @@
 import helmet, { type HelmetOptions } from 'helmet';
 
 export const contentSecurityPolicy: HelmetOptions['contentSecurityPolicy'] = {
+  useDefaults: false,
   directives: {
-    blockAllMixedContent: '',
-    objectSrc: ["'none'"],
-    baseUri: ["'none'"],
-    defaultSrc: ["'self'"],
+    sandbox: '',
+    defaultSrc: ["'none'"],
+    frameAncestors: ["'none'"],
   },
 };
 

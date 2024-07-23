@@ -1,22 +1,17 @@
 import { connectDatabase } from './db';
-import { createServer, stopServer } from './server';
-import { log } from './shared';
+import { log } from './log';
+import { createApp, stopServer } from './server';
 
 (async function startServer() {
   const port = process.env.PORT || '8000';
-  const server = await createServer();
+  const host = process.env.HOST || 'localhost';
 
-  try {
-    const databaseConnection = await connectDatabase();
+  const app = await createApp();
+  const databaseConnection = await connectDatabase();
 
-    if (!databaseConnection) throw new Error('No database connection!');
+  const server = app.listen(port, () => {
+    log.info(`Server is running on http://${host}:${port}`);
+  });
 
-    const s = server.listen(port, () => {
-      log.info(`Server is running on port ${port}`);
-    });
-
-    stopServer(s, databaseConnection);
-  } catch (error) {
-    throw error;
-  }
+  stopServer(server, databaseConnection);
 })().catch((error) => log.error(error, 'Server failed to start'));

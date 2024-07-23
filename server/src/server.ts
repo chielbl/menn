@@ -1,25 +1,26 @@
 import express, { type Express } from 'express';
-import { log, security } from './shared';
 import { Server } from 'http';
 import type { Connection } from 'mongoose';
+import { log } from './log';
+import { security } from './middleware';
 
-export const createServer = async (): Promise<Express> => {
-  const server = express();
+export const createApp = async (): Promise<Express> => {
+  const app = express();
 
   // Middleware
-  server.use(express.json());
-  server.use(security);
-  server.use((req, res, next) => {
+  app.use(express.json());
+  app.use(security);
+  app.use((req, res, next) => {
     log.info({ path: req.path, method: req.method });
     next();
   });
 
   // Routes
-  server.get('/', (req, res) => {
-    res.send('Hello, Express server!');
+  app.get('/', (req, res) => {
+    res.send('Hello, Express app!');
   });
 
-  return server;
+  return app;
 };
 
 export const stopServer = (server: Server, databaseConnection: Connection) => {
@@ -31,7 +32,7 @@ export const stopServer = (server: Server, databaseConnection: Connection) => {
       server.close((error) => {
         if (error) log.error('Server close failed ', error);
         if (!error) log.info('Server closed.');
-        if (databaseConnection) databaseConnection.close();
+        databaseConnection.close();
         process.exit(error ? 1 : 0);
       });
     });
