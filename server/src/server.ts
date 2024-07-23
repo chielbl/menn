@@ -1,5 +1,5 @@
 import express, { type Express } from 'express';
-import { security } from './shared';
+import { log, security } from './shared';
 import { Server } from 'http';
 import type { Connection } from 'mongoose';
 
@@ -10,7 +10,7 @@ export const createServer = async (): Promise<Express> => {
   server.use(express.json());
   server.use(security);
   server.use((req, res, next) => {
-    console.info(req.path, req.method);
+    log.info(req.path, req.method);
     next();
   });
 
@@ -27,10 +27,10 @@ export const stopServer = (server: Server, databaseConnection: Connection) => {
 
   for (const signal of signals) {
     process.on(signal, () => {
-      console.info(`ℹ️  ${signal} signal received.`);
+      log.info(`${signal} signal received.`);
       server.close((error) => {
-        if (error) console.error('❌ server close failed ', error);
-        if (!error) console.info('ℹ️  server closed.');
+        if (error) log.error('Server close failed ', error);
+        if (!error) log.info('Server closed.');
         if (databaseConnection) databaseConnection.close();
         process.exit(error ? 1 : 0);
       });
