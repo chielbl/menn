@@ -6,6 +6,7 @@ import { createApp, shutdown } from './server';
 const port = process.env.PORT || '8000';
 const host = process.env.HOST || 'localhost';
 const databaseUrl = process.env.DATABASE_URL || '';
+export const fullPath = `http://${host}:${port}`;
 
 /**
  * Initializes and starts the server, including creating the app instance,
@@ -28,7 +29,7 @@ const databaseUrl = process.env.DATABASE_URL || '';
 
   // Start the server and log the running information
   const server = app.listen(port, () => {
-    log.info(`Server is running on http://${host}:${port}`);
+    log.info(`Server is running on ${fullPath}`);
   });
   // Handle server shutdown and cleanup
   shutdown(server, mongoose.connection);

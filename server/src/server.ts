@@ -2,7 +2,8 @@ import express, { type Express } from 'express';
 import { Server } from 'http';
 import type { Connection } from 'mongoose';
 import { log } from './log';
-import { security } from './middleware';
+import { logs, security } from './middleware';
+import { productRouter } from './routes';
 
 /**
  * Creates and configures an Express application.
@@ -15,14 +16,12 @@ export const createApp = async (): Promise<Express> => {
 
   app.use(express.json());
   app.use(security);
-  app.use((req, res, next) => {
-    log.info({ path: req.path, method: req.method });
-    next();
-  });
+  app.use(logs);
 
   app.get('/', (req, res) => {
     res.send('Hello, Express app!');
   });
+  app.use('/api/products', productRouter);
 
   // Return the configured Express app instance
   return app;
