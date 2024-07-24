@@ -20,6 +20,7 @@ const databaseUrl = process.env.DATABASE_URL || '';
 (async function start() {
   // Create the application instance
   const app = await createApp();
+  log.info(process.pid);
 
   // Connect to the database
   await mongoose.connect(databaseUrl);
@@ -29,7 +30,6 @@ const databaseUrl = process.env.DATABASE_URL || '';
   const server = app.listen(port, () => {
     log.info(`Server is running on http://${host}:${port}`);
   });
-
   // Handle server shutdown and cleanup
   shutdown(server, mongoose.connection);
 })().catch((error) => log.error(error, 'Server failed to start'));
