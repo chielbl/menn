@@ -1,3 +1,4 @@
+import { createProduct } from '@/controllers';
 import express from 'express';
 
 const router = express.Router();
@@ -10,9 +11,7 @@ router.get('/:id', (req, res) => {
   res.send(`Product ID: ${req.params.id}`);
 });
 
-router.post('/', (req, res) => {
-  res.send('Product created');
-});
+router.post('/', createProduct);
 
 router.delete('/:id', (req, res) => {
   res.send(`Product ID: ${req.params.id} deleted`);

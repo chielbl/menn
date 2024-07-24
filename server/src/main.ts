@@ -3,8 +3,8 @@ import { log } from './log';
 import { createApp, shutdown } from './server';
 
 // Fetch variables from environment or set with default values
-const port = process.env.PORT || '8000';
 const host = process.env.HOST || 'localhost';
+const port = process.env.PORT || '8000';
 const databaseUrl = process.env.DATABASE_URL || '';
 export const fullPath = `http://${host}:${port}`;
 
