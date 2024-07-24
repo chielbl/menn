@@ -1,5 +1,6 @@
 import helmet, { type HelmetOptions } from 'helmet';
 
+// Define the Content Security Policy (CSP) options
 export const contentSecurityPolicy: HelmetOptions['contentSecurityPolicy'] = {
   useDefaults: false,
   directives: {
@@ -9,6 +10,7 @@ export const contentSecurityPolicy: HelmetOptions['contentSecurityPolicy'] = {
   },
 };
 
+// Define the Strict-Transport-Security (HSTS) options
 export const strictTransportSecurity: HelmetOptions['strictTransportSecurity'] =
   {
     maxAge: 31536000,
