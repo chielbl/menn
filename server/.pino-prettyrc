@@ -1,0 +1,7 @@
+{
+    "colorize": true,
+    "singleLine": true,
+    "ignore": "levelSymbol",
+    "translateTime": "SYS:HH:MM:ss",
+    "messageFormat": "{levelSymbol} {msg}"
+  }

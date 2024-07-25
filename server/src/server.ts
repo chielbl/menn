@@ -13,11 +13,12 @@ import { productRouter } from './routes';
 export const createApp = async (): Promise<Express> => {
   // Initialize the Express application
   const app = express();
-
+  // Middlewares
   app.use(express.json());
   app.use(security);
   app.use(logs);
 
+  // Routes
   app.get('/', (req, res) => {
     res.send('Hello, Express app!');
   });
