@@ -7,22 +7,12 @@ export const log = pino({
   formatters: {
     level: (level) => {
       const label = level as Level;
-      let levelSymbol;
-
-      switch (label) {
-        case 'error' || 'fatal':
-          levelSymbol = '❌';
-          break;
-        case 'warn':
-          levelSymbol = '⚠️';
-          break;
-        case 'info':
-          levelSymbol = 'ℹ️ ';
-          break;
-        default:
-          levelSymbol = '🚀';
-          break;
-      }
+      const levelSymbol =
+        label === 'error' || label === 'fatal'
+          ? '❌'
+          : label === 'debug'
+          ? '🚀 '
+          : '';
 
       return { level: label, levelSymbol: levelSymbol };
     },

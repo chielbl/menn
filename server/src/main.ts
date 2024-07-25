@@ -1,9 +1,9 @@
-import { env } from './env';
+import { env, logEnvAppInfo } from './env';
 import mongoose from 'mongoose';
 import { log } from './log';
 import { createApp, shutdown } from './server';
 
-export const fullPath = `http://${env.host}:${env.port}`;
+export const fullPath = `http://${env.HOST}:${env.PORT}`;
 
 /**
  * Initializes and starts the server, including creating the app instance,
@@ -16,15 +16,16 @@ export const fullPath = `http://${env.host}:${env.port}`;
  * @throws {Error} If an error occurs during the server startup or database connection.
  */
 (async function start() {
+  logEnvAppInfo();
   // Create the application instance
   const app = await createApp();
 
   // Connect to the database
-  await mongoose.connect(env.databaseUrl);
+  await mongoose.connect(env.DATABASE_URL);
   log.info(`Connected to the database`);
 
   // Start the server and log the running information
-  const server = app.listen(env.port, () => {
+  const server = app.listen(env.PORT, () => {
     log.info(`Server is running on ${fullPath}`);
   });
   // Handle server shutdown and cleanup
