@@ -1,5 +1,6 @@
 import { Product, type ProductDTO, type TProduct } from '@/models';
 import type { Req, Res } from '../types';
+import { mapperProductDTO } from './mappers';
 
 export const createProduct = async (
   req: Req<TProduct>,

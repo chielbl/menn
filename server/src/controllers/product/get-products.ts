@@ -1,11 +1,13 @@
-import { Product } from '@/models';
-import type { Request, Response } from 'express';
+import { Product, type ProductDTO, type TProduct } from '@/models';
+import type { Res } from '../types';
+import { mapperProductDTO } from './mappers';
 
-export const getProducts = async (req: Request, res: Response) => {
-  try {
-    const products = await Product.find();
-    res.status(200).json({ products });
-  } catch (error: any) {
-    res.status(400).json({ error: error.message });
+export const getProducts = async (_: null, res: Res<ProductDTO[]>) => {
+  const products = await Product.find();
+
+  if (!products) {
+    return res.status(404).json({ error: 'Products not found' });
   }
+
+  res.status(200).json({ data: products.map(mapperProductDTO) });
 };
