@@ -1,11 +1,9 @@
-import { createProduct } from '@/controllers';
+import { createProduct, getProducts } from '@/controllers';
 import express from 'express';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Hello from products');
-});
+router.get('/', getProducts);
 
 router.get('/:id', (req, res) => {
   res.send(`Product ID: ${req.params.id}`);
