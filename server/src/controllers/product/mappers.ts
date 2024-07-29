@@ -1,9 +1,7 @@
-import type { ProductDTO, TProduct } from '@/models';
-import type { Document } from 'mongoose';
+import type { Product } from '@/models';
+import type { ProductDTO } from './types';
 
-export const mapperProductDTO = (
-  product: Document<unknown, unknown, TProduct>,
-): ProductDTO => {
-  const { _id, ...rest } = product.toObject();
-  return { id: _id.toString(), ...rest };
+export const mapperProductDTO = (product: Product): ProductDTO => {
+  const { _id, name, description, category, image, price } = product.toJSON();
+  return { id: _id, name, description, category, image, price };
 };

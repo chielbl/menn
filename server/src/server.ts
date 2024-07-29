@@ -1,3 +1,5 @@
+//Is a package for Express.js that simplifies error handling for asynchronous routes and middleware
+import 'express-async-errors';
 import express, { type Express } from 'express';
 import { Server } from 'http';
 import type { Connection } from 'mongoose';

@@ -3,7 +3,7 @@
 @port=8000
 @path=/api/products
 @baseUrl = http://{{host}}:{{port}}{{path}}
-@id=1
+@id=66a16b04263e7db2e0a253ee
 
 
 ### Create a new product

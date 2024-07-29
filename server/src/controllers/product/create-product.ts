@@ -1,16 +1,20 @@
-import { Product, type ProductDTO, type TProduct } from '@/models';
-import type { Req, Res } from '../types';
+import { ProductModel, type Product } from '@/models';
 import { mapperProductDTO } from './mappers';
+import type { ProductDTO } from './types';
+import type { Request, Response } from 'express';
+
+type ResProduct = { data: ProductDTO } | { error: string };
 
 export const createProduct = async (
-  req: Req<TProduct>,
-  res: Res<ProductDTO>,
+  req: Request,
+  res: Response<ResProduct>,
 ) => {
   const { body } = req;
-  const product = await Product.create(body);
+  const product = await ProductModel.create(body);
 
   if (!product) {
     res.status(400).send({ error: 'Product not created' });
+    return;
   }
 
   res.status(201).send({ data: mapperProductDTO(product) });

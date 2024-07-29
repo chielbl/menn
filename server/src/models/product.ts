@@ -1,21 +1,16 @@
-import { Schema, Types, model } from 'mongoose';
+import { Document, Schema, model } from 'mongoose';
 
 // Create an interface representing a document in MongoDB.
-export type TProduct = {
+export interface Product extends Document {
   name: string;
   description: string;
   category: string;
   image: string;
   price: number;
-};
-
-// Data transfer object
-export interface ProductDTO extends TProduct {
-  id: string;
 }
 
 // Create a Schema corresponding to the document interface.
-const productSchema = new Schema<TProduct>({
+const productSchema = new Schema<Product>({
   name: { type: String, required: true },
   description: { type: String, required: true },
   category: { type: String, required: true },
@@ -24,4 +19,4 @@ const productSchema = new Schema<TProduct>({
 });
 
 // Create a Model.
-export const Product = model<TProduct>('Product', productSchema);
+export const ProductModel = model<Product>('Product', productSchema);
