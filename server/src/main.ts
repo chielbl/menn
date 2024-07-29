@@ -1,7 +1,7 @@
 import { env, logEnvAppInfo } from './env';
 import mongoose from 'mongoose';
 import { log } from './log';
-import { createApp, shutdown } from './server';
+import createApp, { shutdown } from './server';
 
 export const fullPath = `http://${env.HOST}:${env.PORT}`;
 

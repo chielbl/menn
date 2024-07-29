@@ -10,7 +10,7 @@ import { productRouter } from './routes';
  *
  * @returns {Promise<Express>} A promise that resolves to an instance of Express.
  */
-export const createApp = async (): Promise<Express> => {
+export default async (): Promise<Express> => {
   // Initialize the Express application
   const app = express();
   // Middlewares
