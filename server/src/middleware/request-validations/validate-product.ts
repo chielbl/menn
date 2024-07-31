@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import {
+  validateRequest,
   validateRequestBody,
   validateRequestParams,
 } from 'zod-express-middleware';
@@ -25,3 +26,16 @@ export const validateDeleteProduct = validateRequestParams(
     id: z.string(),
   }),
 );
+
+export const validateUpdateProduct = validateRequest({
+  params: z.object({
+    id: z.string(),
+  }),
+  body: z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    category: z.string().optional(),
+    image: z.string().optional(),
+    price: z.number().optional(),
+  }),
+});
