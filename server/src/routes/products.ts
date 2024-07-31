@@ -1,21 +1,20 @@
-import { createProduct, getProducts } from '@/controllers';
+import { createProduct, deleteProduct, getProducts } from '@/controllers';
 import {
-  getProductValidation,
-  createProductValidation,
-} from '@/controllers/product/request-validations';
+  validateCreateProduct,
+  validateDeleteProduct,
+  validateGetProduct,
+} from '@/middleware';
 import express from 'express';
 
 const router = express.Router();
 
 router.get('/', getProducts);
 
-router.get('/:id', getProductValidation, getProducts);
+router.get('/:id', validateGetProduct, getProducts);
 
-router.post('/', createProductValidation, createProduct);
+router.post('/', validateCreateProduct, createProduct);
 
-router.delete('/:id', (req, res) => {
-  res.send(`Product ID: ${req.params.id} deleted`);
-});
+router.delete('/:id', validateDeleteProduct, deleteProduct);
 
 router.put('/:id', (req, res) => {
   res.send(`Product ID: ${req.params.id} updated`);
