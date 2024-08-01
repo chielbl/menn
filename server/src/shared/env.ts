@@ -1,6 +1,6 @@
 import 'dotenv/config';
-import { log } from './log';
-import pkg from '../package.json';
+import pkg from '@/../package.json';
+import { log } from '.';
 
 type Env = {
   HOST: string;

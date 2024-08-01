@@ -3,8 +3,8 @@ import 'express-async-errors';
 import express, { type Express } from 'express';
 import { Server } from 'http';
 import type { Connection } from 'mongoose';
-import { log } from './log';
-import { logs, security } from './middleware';
+import { log } from './shared/log';
+import { errorHandler, logHandler, security } from './middleware';
 import { productRouter } from './routes';
 
 /**
@@ -18,13 +18,14 @@ export default async (): Promise<Express> => {
   // Middlewares
   app.use(express.json());
   app.use(security);
-  app.use(logs);
+  app.use(logHandler);
 
   // Routes
   app.get('/', (req, res) => {
     res.send('Hello, Express app!');
   });
   app.use('/api/products', productRouter);
+  app.use(errorHandler);
 
   // Return the configured Express app instance
   return app;

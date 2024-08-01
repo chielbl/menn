@@ -1,7 +1,7 @@
-import { env, logEnvAppInfo } from './env';
 import mongoose from 'mongoose';
-import { log } from './log';
+import { log } from './shared/log';
 import createApp, { shutdown } from './server';
+import { env, logEnvAppInfo } from './shared';
 
 export const fullPath = `http://${env.HOST}:${env.PORT}`;
 

@@ -1,9 +1,24 @@
 import { ProductModel } from '@/models';
 import type { Request, Response } from 'express';
+import { z } from 'zod';
+import { validateRequest } from 'zod-express-middleware';
+
+export const updateValidator = validateRequest({
+  params: z.object({
+    id: z.string(),
+  }),
+  body: z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    category: z.string().optional(),
+    image: z.string().optional(),
+    price: z.number().optional(),
+  }),
+});
 
 type ResProduct = { message: string } | { error: string };
 
-export const updateProduct = async (
+export const updateHandler = async (
   req: Request,
   res: Response<ResProduct>,
 ) => {

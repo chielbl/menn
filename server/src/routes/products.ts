@@ -1,23 +1,12 @@
-import {
-  createProduct,
-  deleteProduct,
-  getProducts,
-  updateProduct,
-} from '@/controllers';
-import {
-  validateCreateProduct,
-  validateDeleteProduct,
-  validateGetProduct,
-  validateUpdateProduct,
-} from '@/middleware';
+import * as product from '@/controllers/product';
 import express from 'express';
 
 const router = express.Router();
 
-router.get('/', getProducts);
-router.get('/:id', validateGetProduct, getProducts);
-router.post('/', validateCreateProduct, createProduct);
-router.delete('/:id', validateDeleteProduct, deleteProduct);
-router.put('/:id', validateUpdateProduct, updateProduct);
+router.get('/', product.getAllHandler);
+router.get('/:id', product.getValidator, product.getHandler);
+router.post('/', product.createValidator, product.createHandler);
+router.delete('/:id', product.deleteValidator, product.deleteHandler);
+router.put('/:id', product.updateValidator, product.updateHandler);
 
 export const productRouter = router;
