@@ -1,11 +1,12 @@
 import { ProductModel } from '@/models';
 import type { Request, Response } from 'express';
+import mongoose from 'mongoose';
 import { z } from 'zod';
 import { validateRequest } from 'zod-express-middleware';
 
 export const updateValidator = validateRequest({
   params: z.object({
-    id: z.string(),
+    id: z.string().refine((val) => mongoose.Types.ObjectId.isValid(val)),
   }),
   body: z.object({
     name: z.string().optional(),
@@ -24,11 +25,6 @@ export const updateHandler = async (
 ) => {
   const { params, body } = req;
   const { id } = params;
-
-  if (!id) {
-    return res.status(400).json({ error: 'Product ID is required' });
-  }
-
   const product = await ProductModel.findById(id);
 
   if (!product) {

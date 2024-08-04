@@ -15,7 +15,7 @@ export const createValidator = validateRequestBody(
   }),
 );
 
-type ResProduct = { data: ProductDTO } | { error: string };
+type ResProduct = ProductDTO | { error: string };
 
 export const createHandler = async (
   req: Request,
@@ -24,10 +24,5 @@ export const createHandler = async (
   const { body } = req;
   const product = await ProductModel.create(body);
 
-  if (!product) {
-    res.status(400).send({ error: 'Product not created' });
-    return;
-  }
-
-  res.status(201).send({ data: mapperProductDTO(product) });
+  return res.status(201).send(mapperProductDTO(product));
 };

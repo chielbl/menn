@@ -3,7 +3,7 @@ import { mapperProductDTO } from './mappers';
 import type { ProductDTO } from './types';
 import type { Request, Response } from 'express';
 
-type ResProducts = { data: ProductDTO[] } | { error: string };
+type ResProducts = ProductDTO[] | { error: string };
 
 export const getAllHandler = async (
   _req: Request,
@@ -15,5 +15,5 @@ export const getAllHandler = async (
     return res.status(404).json({ error: 'Products not found' });
   }
 
-  return res.status(200).json({ data: products.map(mapperProductDTO) });
+  return res.status(200).json(products.map(mapperProductDTO));
 };
