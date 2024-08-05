@@ -1,4 +1,5 @@
 import { ProductModel } from '@/models';
+import { NotFound } from '@/shared';
 import type { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { z } from 'zod';
@@ -17,21 +18,14 @@ export const updateValidator = validateRequest({
   }),
 });
 
-type ResProduct = { message: string } | { error: string };
-
-export const updateHandler = async (
-  req: Request,
-  res: Response<ResProduct>,
-) => {
+export const updateHandler = async (req: Request, res: Response<string>) => {
   const { params, body } = req;
   const { id } = params;
   const product = await ProductModel.findById(id);
 
-  if (!product) {
-    return res.status(404).json({ error: 'Product not found' });
-  }
+  if (!product) throw new NotFound('Product not found');
 
   await ProductModel.updateOne({ _id: id }, body);
 
-  return res.status(200).json({ message: 'Product updated' });
+  return res.status(200).json('Product updated');
 };

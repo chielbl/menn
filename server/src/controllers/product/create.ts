@@ -1,4 +1,4 @@
-import { ProductModel, type Product } from '@/models';
+import { ProductModel } from '@/models';
 import { mapperProductDTO } from './mappers';
 import type { ProductDTO } from './types';
 import type { Request, Response } from 'express';
@@ -15,11 +15,9 @@ export const createValidator = validateRequestBody(
   }),
 );
 
-type ResProduct = ProductDTO | { error: string };
-
 export const createHandler = async (
   req: Request,
-  res: Response<ResProduct>,
+  res: Response<ProductDTO>,
 ) => {
   const { body } = req;
   const product = await ProductModel.create(body);

@@ -10,14 +10,10 @@ export const deleteValidator = validateRequestParams(
   }),
 );
 
-type ResProduct = { message: string } | { error: string };
-
-export const deleteHandler = async (
-  req: Request,
-  res: Response<ResProduct>,
-) => {
+export const deleteHandler = async (req: Request, res: Response<string>) => {
   const { id } = req.params;
 
   await ProductModel.findByIdAndDelete(id);
-  return res.send({ message: `Product with ${id} is deleted` });
+
+  return res.send(`Product with ${id} is deleted`);
 };

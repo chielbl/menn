@@ -21,7 +21,7 @@ export default async (): Promise<Express> => {
   app.use(logHandler);
 
   // Routes
-  app.get('/', (req, res) => {
+  app.get('/', (_req, res) => {
     res.send('Hello, Express app!');
   });
   app.use('/api/products', productRouter);
