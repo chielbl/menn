@@ -3,7 +3,7 @@
 @port=8000
 @path=/api/products
 @baseUrl = http://{{host}}:{{port}}{{path}}
-@id=66a3b65224922a0d596c54e1
+@id=66b0e0acb362b5d0ab593a13
 
 
 ### Create a new product
@@ -15,7 +15,7 @@ Content-Type: application/json; charset=UTF-8
   "description": "This is a sample product description.",
   "category": "Electronics",
   "image": "https://example.com/images/sample-product.jpg",
-  "price": 99,
+  "price": 1,
 }
 
 ### Get all products

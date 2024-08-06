@@ -1,11 +1,10 @@
 import { ProductModel } from '@/models';
-import { NotFound } from '@/shared';
+import { BadRequest, log, NotFound } from '@/shared';
 import type { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { z } from 'zod';
-import { validateRequest } from 'zod-express-middleware';
 
-export const updateValidator = validateRequest({
+const updateSchema = z.object({
   params: z.object({
     id: z.string().refine((val) => mongoose.Types.ObjectId.isValid(val)),
   }),
@@ -19,7 +18,17 @@ export const updateValidator = validateRequest({
 });
 
 export const updateHandler = async (req: Request, res: Response<string>) => {
-  const { params, body } = req;
+  const { data, success, error } = updateSchema.safeParse({
+    params: req.params,
+    body: req.body,
+  });
+
+  if (!success) {
+    log.error(error.flatten());
+    throw new BadRequest('Invalid request body');
+  }
+
+  const { params, body } = data;
   const { id } = params;
   const product = await ProductModel.findById(id);
 

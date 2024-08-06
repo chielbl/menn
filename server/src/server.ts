@@ -6,6 +6,8 @@ import type { Connection } from 'mongoose';
 import { log } from './shared/log';
 import { errorHandler, logHandler, security } from './middleware';
 import { productRouter } from './routes';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from '../tsp/output/openapi.json';
 
 /**
  * Creates and configures an Express application.
@@ -15,10 +17,18 @@ import { productRouter } from './routes';
 export default async (): Promise<Express> => {
   // Initialize the Express application
   const app = express();
+
   // Middlewares
+  app.use(logHandler);
+  app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument, {
+      explorer: true,
+    }),
+  );
   app.use(express.json());
   app.use(security);
-  app.use(logHandler);
 
   // Routes
   app.get('/', (_req, res) => {

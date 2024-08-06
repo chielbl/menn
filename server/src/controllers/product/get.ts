@@ -2,19 +2,23 @@ import { ProductModel } from '@/models';
 import { mapperProductDTO } from './mappers';
 import type { ProductDTO } from './types';
 import type { Request, Response } from 'express';
-import { validateRequestParams } from 'zod-express-middleware';
 import { z } from 'zod';
 import mongoose from 'mongoose';
-import { NotFound } from '@/shared';
+import { BadRequest, log, NotFound } from '@/shared';
 
-export const getValidator = validateRequestParams(
-  z.object({
-    id: z.string().refine((val) => mongoose.Types.ObjectId.isValid(val)),
-  }),
-);
+const getSchema = z.object({
+  id: z.string().refine((val) => mongoose.Types.ObjectId.isValid(val)),
+});
 
 export const getHandler = async (req: Request, res: Response<ProductDTO>) => {
-  const { id } = req.params;
+  const { data, success, error } = getSchema.safeParse(req.params);
+
+  if (!success) {
+    log.error(error.flatten());
+    throw new BadRequest('Invalid id');
+  }
+
+  const { id } = data;
   const product = await ProductModel.findById(id);
 
   if (!product) throw new NotFound('Product not found');
