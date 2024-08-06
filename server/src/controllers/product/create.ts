@@ -18,13 +18,7 @@ export const createHandler = async (
   res: Response<ProductDTO>,
 ) => {
   const { body } = req;
-  const { data, success, error } = createSchema.safeParse(body);
-
-  if (!success) {
-    log.error(error.flatten());
-    throw new BadRequest('Invalid request body');
-  }
-
+  const data = createSchema.parse(body);
   const product = await ProductModel.create(data);
 
   return res.status(201).send(mapperProductDTO(product));

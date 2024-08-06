@@ -49,8 +49,8 @@ export class Conflict extends HttpError {
   }
 }
 
-export class InternalServerError extends HttpError {
+export class ServerError extends HttpError {
   constructor() {
-    super(500, 'Internal Server Error');
+    super(500, 'Server Error');
   }
 }

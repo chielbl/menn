@@ -4,4 +4,4 @@ emit:
 options:
   '@typespec/openapi3':
     file-type: json
-    emitter-output-dir: '{cwd}/tsp/output'
+    emitter-output-dir: '{cwd}/swagger/out'

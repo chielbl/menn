@@ -10,14 +10,7 @@ const deleteSchema = z.object({
 
 export const deleteHandler = async (req: Request, res: Response<string>) => {
   const { params } = req;
-  const { data, success, error } = deleteSchema.safeParse(params);
-
-  if (!success) {
-    log.error(error.flatten());
-    throw new BadRequest('Invalid id');
-  }
-
-  const { id } = data;
+  const { id } = deleteSchema.parse(params);
 
   await ProductModel.findByIdAndDelete(id);
 

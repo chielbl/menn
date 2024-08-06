@@ -7,7 +7,7 @@
     "dev": "tsx watch src/main.ts | pino-pretty",
     "db:up": "docker-compose up -d",
     "db:down": "docker-compose down",
-    "gen:openapi": "tsp --config ./tsp/tspconfig.yaml compile ./tsp",
+    "gen:swagger": "tsp --config ./swagger/tspconfig.yaml compile ./swagger",
     "deps:check": "npx npm-check-updates",
     "deps:upd": "npx npm-check-updates -u && pnpm install"
   },

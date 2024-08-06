@@ -18,17 +18,10 @@ const updateSchema = z.object({
 });
 
 export const updateHandler = async (req: Request, res: Response<string>) => {
-  const { data, success, error } = updateSchema.safeParse({
+  const { params, body } = updateSchema.parse({
     params: req.params,
     body: req.body,
   });
-
-  if (!success) {
-    log.error(error.flatten());
-    throw new BadRequest('Invalid request body');
-  }
-
-  const { params, body } = data;
   const { id } = params;
   const product = await ProductModel.findById(id);
 

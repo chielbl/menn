@@ -2,6 +2,10 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Product Service",
+    "description": "This is a shop API",
+    "contact": {
+      "name": "Chiel Bleyenbergh"
+    },
     "version": "0.0.0"
   },
   "tags": [
@@ -15,7 +19,7 @@
         "tags": [
           "Product"
         ],
-        "operationId": "Products_getAll",
+        "operationId": "Products_GetAll",
         "parameters": [],
         "responses": {
           "200": {
@@ -47,7 +51,7 @@
         "tags": [
           "Product"
         ],
-        "operationId": "Products_create",
+        "operationId": "Products_Create",
         "parameters": [],
         "responses": {
           "200": {
@@ -56,6 +60,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server could not understand the request due to invalid syntax.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
                 }
               }
             }
@@ -88,7 +102,7 @@
         "tags": [
           "Product"
         ],
-        "operationId": "Products_get",
+        "operationId": "Products_Get",
         "parameters": [
           {
             "name": "id",
@@ -110,6 +124,16 @@
               }
             }
           },
+          "404": {
+            "description": "The server cannot find the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
+          },
           "default": {
             "description": "An unexpected error response.",
             "content": {
@@ -126,7 +150,7 @@
         "tags": [
           "Product"
         ],
-        "operationId": "Products_delete",
+        "operationId": "Products_Delete",
         "parameters": [
           {
             "name": "id",
@@ -143,7 +167,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The server cannot find the requested resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
                 }
               }
             }
@@ -164,14 +198,15 @@
         "tags": [
           "Product"
         ],
-        "operationId": "Products_update",
+        "operationId": "Products_Update",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -181,7 +216,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The server could not understand the request due to invalid syntax.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
                 }
               }
             }
@@ -212,6 +257,24 @@
   },
   "components": {
     "schemas": {
+      "BadRequest": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The status code for the error"
+          },
+          "message": {
+            "type": "string",
+            "example": "Bad Request",
+            "description": "A more descriptive message about the error"
+          }
+        }
+      },
       "Error": {
         "type": "object",
         "required": [
@@ -220,10 +283,30 @@
         ],
         "properties": {
           "code": {
-            "type": "string"
+            "type": "string",
+            "example": "XXX"
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Error"
+          }
+        }
+      },
+      "NotFound": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The status code for the error"
+          },
+          "message": {
+            "type": "string",
+            "example": "Not Found",
+            "description": "A more descriptive message about the error"
           }
         }
       },
@@ -242,10 +325,14 @@
             "type": "string"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
           },
           "category": {
             "type": "string"
@@ -269,10 +356,14 @@
         ],
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
           },
           "category": {
             "type": "string"
