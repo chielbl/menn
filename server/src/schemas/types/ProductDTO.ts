@@ -28,7 +28,7 @@ import { Meta } from "./Meta";
     */
     rating: number;
     /**
-     * @type integer
+     * @type number
     */
     stock: number;
     availabilityStatus: AvailabilityStatus;

@@ -43,7 +43,7 @@ model Product {
 
   @minValue(0)
   @example(0)
-  stock: integer;
+  stock: float;
 
   availabilityStatus: AvailabilityStatus;
 

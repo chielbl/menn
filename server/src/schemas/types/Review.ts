@@ -1,6 +1,6 @@
 export type Review = {
     /**
-     * @type integer
+     * @type number
     */
     rating: number;
     /**

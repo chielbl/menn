@@ -2,7 +2,7 @@ model Review{
   @minValue(1)
   @maxValue(5)
   @example(1)
-  rating: integer;
+  rating: float;
 
   @minLength(1)
   @maxLength(100)
