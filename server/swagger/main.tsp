@@ -1,9 +1,9 @@
 // Globals  
 import "./globals.tsp";
 
-// Models
-import "./models/Error.tsp";
-import "./models/Product.tsp";
+// Schemas
+import "./schemas/error.tsp";
+import "./schemas/product.tsp";
 
 import "@typespec/http";
 import "@typespec/rest";

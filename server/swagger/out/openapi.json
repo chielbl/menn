@@ -257,6 +257,15 @@
   },
   "components": {
     "schemas": {
+      "AvailabilityStatus": {
+        "type": "string",
+        "enum": [
+          "In Stock",
+          "Low Stock",
+          "Out of Stock"
+        ],
+        "example": "Low Stock"
+      },
       "BadRequest": {
         "type": "object",
         "required": [
@@ -275,6 +284,13 @@
           }
         }
       },
+      "Category": {
+        "type": "string",
+        "enum": [
+          "Cookie"
+        ],
+        "example": "Cookie"
+      },
       "Error": {
         "type": "object",
         "required": [
@@ -289,6 +305,27 @@
           "message": {
             "type": "string",
             "example": "Error"
+          }
+        }
+      },
+      "Meta": {
+        "type": "object",
+        "required": [
+          "createdOn",
+          "updatedOn"
+        ],
+        "properties": {
+          "createdOn": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date & time the resources was created",
+            "readOnly": true
+          },
+          "updatedOn": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date & time the resources was last updated",
+            "readOnly": true
           }
         }
       },
@@ -317,31 +354,81 @@
           "name",
           "description",
           "category",
-          "image",
-          "price"
+          "price",
+          "discountPercentage",
+          "rating",
+          "stock",
+          "availabilityStatus",
+          "thumbnail",
+          "images",
+          "reviews",
+          "meta"
         ],
         "properties": {
           "id": {
-            "type": "string"
+            "$ref": "#/components/schemas/objectId"
           },
           "name": {
             "type": "string",
+            "example": "Original Cookie",
             "minLength": 1,
             "maxLength": 20
           },
           "description": {
             "type": "string",
+            "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "minLength": 1,
             "maxLength": 100
           },
           "category": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
+            "$ref": "#/components/schemas/Category"
           },
           "price": {
-            "type": "number"
+            "type": "number",
+            "example": 9.99,
+            "minimum": 0
+          },
+          "discountPercentage": {
+            "type": "number",
+            "example": 0,
+            "minimum": 0
+          },
+          "rating": {
+            "type": "number",
+            "example": 0,
+            "minimum": 0,
+            "maximum": 5
+          },
+          "stock": {
+            "type": "integer",
+            "example": 0,
+            "minimum": 0
+          },
+          "availabilityStatus": {
+            "$ref": "#/components/schemas/AvailabilityStatus"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Review"
+            }
+          },
+          "meta": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Meta"
+              }
+            ],
+            "readOnly": true
           }
         }
       },
@@ -351,30 +438,112 @@
           "name",
           "description",
           "category",
-          "image",
-          "price"
+          "price",
+          "discountPercentage",
+          "rating",
+          "stock",
+          "availabilityStatus",
+          "thumbnail",
+          "images",
+          "reviews"
         ],
         "properties": {
           "name": {
             "type": "string",
+            "example": "Original Cookie",
             "minLength": 1,
             "maxLength": 20
           },
           "description": {
             "type": "string",
+            "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "minLength": 1,
             "maxLength": 100
           },
           "category": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
+            "$ref": "#/components/schemas/Category"
           },
           "price": {
-            "type": "number"
+            "type": "number",
+            "example": 9.99,
+            "minimum": 0
+          },
+          "discountPercentage": {
+            "type": "number",
+            "example": 0,
+            "minimum": 0
+          },
+          "rating": {
+            "type": "number",
+            "example": 0,
+            "minimum": 0,
+            "maximum": 5
+          },
+          "stock": {
+            "type": "integer",
+            "example": 0,
+            "minimum": 0
+          },
+          "availabilityStatus": {
+            "$ref": "#/components/schemas/AvailabilityStatus"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Review"
+            }
           }
         }
+      },
+      "Review": {
+        "type": "object",
+        "required": [
+          "rating",
+          "comment",
+          "date",
+          "reviewerName",
+          "reviewerEmail"
+        ],
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "example": 1,
+            "minimum": 1,
+            "maximum": 5
+          },
+          "comment": {
+            "type": "string",
+            "example": "Very unhappy with my purchase!",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewerName": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "reviewerEmail": {
+            "type": "string",
+            "example": "john.doe@test.com"
+          }
+        }
+      },
+      "objectId": {
+        "type": "string",
+        "example": "66b110c33b57a8e773000001",
+        "pattern": "^[0-9a-fA-F]{24}$"
       }
     }
   },
