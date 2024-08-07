@@ -1,0 +1,1 @@
+{"type":"object","properties":{"createdOn":{"description":"The date & time the resources was created","type":"string","format":"date-time","readOnly":true},"updatedOn":{"description":"The date & time the resources was last updated","type":"string","format":"date-time","readOnly":true}},"required":["createdOn","updatedOn"],"x-readme-ref-name":"Meta"}

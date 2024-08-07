@@ -1,0 +1,1 @@
+{"type":"object","properties":{"code":{"description":"The status code for the error","type":"string"},"message":{"description":"A more descriptive message about the error","type":"string","example":"Not Found"}},"required":["code","message"],"x-readme-ref-name":"NotFound"}

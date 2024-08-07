@@ -8,6 +8,7 @@
     "db:up": "docker-compose up -d",
     "db:down": "docker-compose down",
     "gen:swagger": "tsp --config ./swagger/tspconfig.yaml compile ./swagger",
+    "gen:schemas": "rm -rf src/schemas && kubb --config kubb.config.ts",
     "deps:check": "npx npm-check-updates",
     "deps:upd": "npx npm-check-updates -u && pnpm install"
   },
@@ -16,6 +17,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@kubb/cli": "^2.25.1",
+    "@kubb/core": "^2.25.1",
+    "@kubb/plugin-oas": "^2.25.1",
+    "@kubb/swagger": "^2.25.1",
+    "@kubb/swagger-ts": "^2.25.1",
+    "@kubb/swagger-zod": "^2.25.1",
     "@typespec/compiler": "^0.58.1",
     "@typespec/http": "^0.58.0",
     "@typespec/openapi": "^0.58.0",

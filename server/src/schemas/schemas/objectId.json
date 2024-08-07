@@ -1,0 +1,1 @@
+{"type":"string","example":"66b110c33b57a8e773000001","pattern":"^[0-9a-fA-F]{24}$","x-readme-ref-name":"objectId"}

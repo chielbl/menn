@@ -1,0 +1,1 @@
+{"type":"string","example":"Low Stock","enum":["In Stock","Low Stock","Out of Stock"],"x-readme-ref-name":"AvailabilityStatus"}
