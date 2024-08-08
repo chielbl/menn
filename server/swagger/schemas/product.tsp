@@ -5,7 +5,7 @@ import "../globals.tsp";
 import "./meta.tsp";
 import "./review.tsp";
 import "./category.tsp";
-import "./availabilityStatus.tsp";
+import "./availability-status.tsp";
 
 import "@typespec/http";
 
@@ -13,7 +13,7 @@ using TypeSpec.Http;
 
 
 model Product {
-  @visibility("read","update") 
+  @visibility("read") 
   id: objectId;
 
   @minLength(1)
@@ -53,6 +53,12 @@ model Product {
 
   reviews: Review[];
 
-  @visibility("read")
-  meta: Meta;
+  // ...Meta;
+  @doc("The date & time the resources was created")
+  @visibility("read","query")
+  createdAt: utcDateTime;
+
+  @doc("The date & time åthe resources was last updated")
+  @visibility("read","query")
+  updatedAt: utcDateTime;
 }

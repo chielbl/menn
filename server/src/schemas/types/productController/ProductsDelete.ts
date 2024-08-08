@@ -1,4 +1,3 @@
-import { NotFound } from "../NotFound";
 import { Error } from "../Error";
 import type { ProductDTO } from "../ProductDTO";
 
@@ -13,9 +12,9 @@ import type { ProductDTO } from "../ProductDTO";
 */
 export type ProductsDelete200 = ProductDTO;
 /**
- * @description The server cannot find the requested resource.
+ * @description There is no content to send for this request, but the headers may be useful.
 */
-export type ProductsDelete404 = NotFound;
+export type ProductsDelete204 = any;
 /**
  * @description An unexpected error response.
 */
@@ -27,5 +26,4 @@ export type ProductsDeleteMutationResponse = ProductDTO;
 export type ProductsDeleteMutation = {
     Response: ProductsDeleteMutationResponse;
     PathParams: ProductsDeletePathParams;
-    Errors: ProductsDelete404;
 };

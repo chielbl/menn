@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { productSchema } from "./productSchema";
-import { notFoundSchema } from "./notFoundSchema";
 import { errorSchema } from "./errorSchema";
 
 
@@ -10,9 +9,9 @@ export const productsDeletePathParamsSchema = z.object({ "id": z.string() });
  */
 export const productsDelete200Schema = z.lazy(() => productSchema);
 /**
- * @description The server cannot find the requested resource.
+ * @description There is no content to send for this request, but the headers may be useful.
  */
-export const productsDelete404Schema = z.lazy(() => notFoundSchema);
+export const productsDelete204Schema = z.any();
 /**
  * @description An unexpected error response.
  */

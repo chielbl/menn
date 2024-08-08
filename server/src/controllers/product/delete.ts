@@ -1,18 +1,25 @@
 import { ProductModel } from '@/models';
-import { BadRequest, log } from '@/shared';
+import type { ProductDTO } from '@/schemas';
+import {
+  productsDeleteMutationResponseSchema,
+  productsDeletePathParamsSchema,
+} from '@/schemas/zod';
 import type { Request, Response } from 'express';
-import mongoose from 'mongoose';
-import { z } from 'zod';
+import { mapperProductDTO } from './mappers';
 
-const deleteSchema = z.object({
-  id: z.string().refine((val) => mongoose.Types.ObjectId.isValid(val)),
-});
-
-export const deleteHandler = async (req: Request, res: Response<string>) => {
+export const deleteHandler = async (
+  req: Request,
+  res: Response<ProductDTO>,
+) => {
   const { params } = req;
-  const { id } = deleteSchema.parse(params);
+  const { id } = productsDeletePathParamsSchema.parse(params);
+  const product = await ProductModel.findByIdAndDelete(id);
 
-  await ProductModel.findByIdAndDelete(id);
+  if (!product) return res.status(204);
 
-  return res.send(`Product with ${id} is deleted`);
+  const productDTO = mapperProductDTO(product);
+  const validProductDTO =
+    productsDeleteMutationResponseSchema.parse(productDTO);
+
+  return res.send(validProductDTO);
 };

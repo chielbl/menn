@@ -1,12 +1,13 @@
 import { BadRequest } from "../BadRequest";
 import { Error } from "../Error";
+import { ProductCreateOrUpdate } from "../ProductCreateOrUpdate";
 import type { ProductDTO } from "../ProductDTO";
 
  export type ProductsUpdatePathParams = {
     /**
-     * @type integer, int32
+     * @type string
     */
-    id: number;
+    id: string;
 };
 /**
  * @description The request has succeeded.
@@ -20,7 +21,7 @@ export type ProductsUpdate400 = BadRequest;
  * @description An unexpected error response.
 */
 export type ProductsUpdateError = Error;
-export type ProductsUpdateMutationRequest = Omit<NonNullable<ProductDTO>, "meta">;
+export type ProductsUpdateMutationRequest = ProductCreateOrUpdate;
 /**
  * @description The request has succeeded.
 */

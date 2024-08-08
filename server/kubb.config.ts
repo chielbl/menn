@@ -27,16 +27,16 @@ export default defineConfig({
       },
       enumType: 'asConst',
       enumSuffix: 'Enum',
-      dateType: 'date',
-      unknownType: 'unknown',
-      optionalType: 'questionTokenAndUndefined',
-      oasType: false,
-      exclude: [
-        {
-          type: 'tag',
-          pattern: 'store',
-        },
-      ],
+      // dateType: 'date',
+      // unknownType: 'unknown',
+      // optionalType: 'questionTokenAndUndefined',
+      // oasType: false,
+      // exclude: [
+      //   {
+      //     type: 'tag',
+      //     pattern: 'store',
+      //   },
+      // ],
       group: {
         type: 'tag',
         output: './types/{{tag}}Controller',

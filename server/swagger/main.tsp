@@ -2,7 +2,7 @@
 import "./globals.tsp";
 
 // Schemas
-import "./schemas/error.tsp";
+import "./schemas/http-responses.tsp";
 import "./schemas/product.tsp";
 
 import "@typespec/http";

@@ -1,7 +1,7 @@
 import { productsGetAllQueryResponseSchema } from "./productsGetAllSchema";
 import { productsCreateMutationRequestSchema, productsCreateMutationResponseSchema, productsCreate400Schema } from "./productsCreateSchema";
 import { productsGetQueryResponseSchema, productsGet404Schema, productsGetPathParamsSchema } from "./productsGetSchema";
-import { productsDeleteMutationResponseSchema, productsDelete404Schema, productsDeletePathParamsSchema } from "./productsDeleteSchema";
+import { productsDeleteMutationResponseSchema, productsDeletePathParamsSchema } from "./productsDeleteSchema";
 import { productsUpdateMutationRequestSchema, productsUpdateMutationResponseSchema, productsUpdate400Schema, productsUpdatePathParamsSchema } from "./productsUpdateSchema";
 
  export const operations = { "Products_GetAll": {
@@ -55,12 +55,9 @@ import { productsUpdateMutationRequestSchema, productsUpdateMutationResponseSche
         },
         responses: {
             200: productsDeleteMutationResponseSchema,
-            404: productsDelete404Schema,
             default: productsDeleteMutationResponseSchema
         },
-        errors: {
-            404: productsDelete404Schema
-        }
+        errors: {}
     }, "Products_Update": {
         request: productsUpdateMutationRequestSchema,
         parameters: {

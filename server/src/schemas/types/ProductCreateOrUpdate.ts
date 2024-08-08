@@ -1,10 +1,8 @@
-import { ObjectId } from "./ObjectId";
 import { Category } from "./Category";
 import { AvailabilityStatus } from "./AvailabilityStatus";
 import { Review } from "./Review";
 
- export type ProductDTO = {
-    readonly id: ObjectId;
+ export type ProductCreateOrUpdate = {
     /**
      * @type string
     */
@@ -43,14 +41,4 @@ import { Review } from "./Review";
      * @type array
     */
     reviews: Review[];
-    /**
-     * @description The date & time the resources was created
-     * @type string, date-time
-    */
-    createdAt: string;
-    /**
-     * @description The date & time åthe resources was last updated
-     * @type string, date-time
-    */
-    updatedAt: string;
 };

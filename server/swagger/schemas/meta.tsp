@@ -1,9 +1,9 @@
 model Meta {
   @doc("The date & time the resources was created")
   @visibility("read")
-  createdOn: utcDateTime;
+  createdAt: utcDateTime;
 
   @doc("The date & time the resources was last updated")
   @visibility("read")
-  updatedOn: utcDateTime;
+  updatedAt: utcDateTime;
 }

@@ -10,7 +10,7 @@ export type Review = {
     /**
      * @type string, date-time
     */
-    date: Date;
+    date: string;
     /**
      * @type string
     */

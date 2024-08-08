@@ -1,8 +1,9 @@
 import { ProductModel } from '@/models';
 import { mapperProductDTO } from './mappers';
-import type { ProductDTO } from './types';
 import type { Request, Response } from 'express';
 import { NotFound } from '@/shared';
+import { productsGetAllQueryResponseSchema } from '@/schemas/zod';
+import type { ProductDTO } from '@/schemas';
 
 export const getAllHandler = async (
   _req: Request,
@@ -12,5 +13,8 @@ export const getAllHandler = async (
 
   if (!products) throw new NotFound('No products found');
 
-  return res.status(200).json(products.map(mapperProductDTO));
+  const productsDTO = products.map(mapperProductDTO);
+  const validProductsDTO = productsGetAllQueryResponseSchema.parse(productsDTO);
+
+  return res.status(200).json(validProductsDTO);
 };

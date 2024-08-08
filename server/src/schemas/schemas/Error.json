@@ -1,1 +1,0 @@
-{"type":"object","properties":{"code":{"type":"string","example":"XXX"},"message":{"type":"string","example":"Error"}},"required":["code","message"],"x-readme-ref-name":"Error"}

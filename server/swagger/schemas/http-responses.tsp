@@ -2,6 +2,13 @@ import "@typespec/http";
 
 using TypeSpec.Http;
 
+// Success
+model NoContent {
+  @statusCode 
+  statusCode: 204;
+}
+
+// Errors
 @error
 model Error {
   @example("XXX")
