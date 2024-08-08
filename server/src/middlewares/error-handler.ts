@@ -9,7 +9,6 @@ export const errorHandler: ErrorRequestHandler = (err, _req, res, next) => {
 
   if (err.name === 'ZodError') {
     const zodError = err as ZodError;
-    console.log('🚀 ~ zodError:', JSON.stringify(zodError));
     const flatError = zodError.flatten();
     res.status(400).send(flatError);
     return;
