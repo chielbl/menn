@@ -1,4 +1,4 @@
-import { ProductModel } from '@/models';
+import { ProductModel } from '@/db/models';
 import { mapperProductDTO } from './mappers';
 import type { Request, Response } from 'express';
 import { NotFound } from '@/shared';

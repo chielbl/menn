@@ -1,4 +1,4 @@
-import type { Product } from '@/models';
+import type { Product } from '@/db/models';
 import type { ProductDTO } from '@/schemas';
 
 export const mapperProductDTO = (product: Product): ProductDTO => {

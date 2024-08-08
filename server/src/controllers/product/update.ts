@@ -1,4 +1,4 @@
-import { ProductModel, type Product } from '@/models';
+import { ProductModel, type Product } from '@/db/models';
 import type { ProductDTO } from '@/schemas';
 import {
   productsUpdateMutationRequestSchema,
