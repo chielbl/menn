@@ -1,4 +1,3 @@
-export const mockProductId = '000000000000000000000001';
 export const mockProduct = {
   name: 'Sample Product',
   description: 'This is a sample product description.',
@@ -12,10 +11,3 @@ export const mockProduct = {
   images: [],
   reviews: [],
 };
-
-export const mockProducts = [
-  {
-    id: mockProductId,
-    ...mockProduct,
-  },
-];

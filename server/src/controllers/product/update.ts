@@ -16,7 +16,9 @@ export const updateHandler = async (
   const { params, body } = req;
   const { id } = productsUpdatePathParamsSchema.parse(params);
   const validData = productsUpdateMutationRequestSchema.parse(body);
-  const product = await ProductModel.findOneAndUpdate({ _id: id }, validData);
+  const product = await ProductModel.findOneAndUpdate({ _id: id }, validData, {
+    new: true,
+  });
 
   if (!product) throw new NotFound('Product not found');
 
