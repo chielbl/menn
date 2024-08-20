@@ -11,7 +11,7 @@ export const getAllHandler = async (
 ) => {
   const products = await ProductModel.find();
 
-  if (!products) throw new NotFound('No products found');
+  if (!products.length) throw new NotFound('No products found');
 
   const productsDTO = products.map(mapperProductDTO);
   const validProductsDTO = productsGetAllQueryResponseSchema.parse(productsDTO);

@@ -14,8 +14,9 @@ export const deleteHandler = async (
   const { params } = req;
   const { id } = productsDeletePathParamsSchema.parse(params);
   const product = await ProductModel.findByIdAndDelete(id);
+  console.log('🚀 ~ product: test', product);
 
-  if (!product) return res.status(204);
+  if (!product) return res.status(204).send();
 
   const productDTO = mapperProductDTO(product);
   const validProductDTO =
