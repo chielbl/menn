@@ -1,4 +1,4 @@
-import { productsMD } from '../mocked-data';
+import { mockProducts } from '../mock-data';
 import { ProductModel } from './../../../src/db/models/product';
 import mongoose from 'mongoose';
 
@@ -10,8 +10,13 @@ export const mongooseDB = (
   }
 
   if (status === 'seed') {
-    const promises = productsMD.map((data) => {
-      const product = new ProductModel(data);
+    const promises = mockProducts.map((data) => {
+      const { id, ...rest } = data;
+      const objectId = new mongoose.Types.ObjectId(id);
+      const product = new ProductModel({
+        _id: objectId,
+        ...rest,
+      });
       return product.save();
     });
 

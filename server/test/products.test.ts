@@ -1,9 +1,10 @@
+import { ProductDTO } from './../src/schemas/types/ProductDTO';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import supertest from 'supertest';
 
 import createApp from '../src/server';
 import { mongooseDB } from './shared/utils/mongoose-helper';
-import { productsMD } from './shared/mocked-data';
+import { mockProduct, mockProductId, mockProducts } from './shared/mock-data';
 
 const app = await createApp();
 
@@ -19,9 +20,21 @@ describe('Products routes', () => {
   });
 
   it('GET all products', async () => {
-    const res = await supertest(app).get('/api/products');
+    const { body, status } = await supertest(app).get('/api/products');
+    const products = body as ProductDTO[];
 
-    expect(res.status).toBe(200);
-    expect(res.body).toHaveLength(productsMD.length);
+    expect(status).toBe(200);
+    expect(products.length).toBeGreaterThan(0);
+    expect(products).toHaveLength(mockProducts.length);
+  });
+
+  it('GET product by id (products/:id)', async () => {
+    const { body, status } = await supertest(app).get(
+      `/api/products/${mockProductId}`,
+    );
+    const product = body as ProductDTO;
+
+    expect(status).toBe(200);
+    expect(product).toMatchObject(mockProduct);
   });
 });
