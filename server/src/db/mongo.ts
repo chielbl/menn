@@ -15,11 +15,11 @@ export const mongo = (status: MongoStatus, uri?: string) => {
   if (status === 'disconnect' || readyState === 1) {
     mongoConnection.close();
     log.info(`Disconnected to the database`);
-    return;
   }
 
-  mongoose.connect(uri || env.DATABASE_URL);
-  log.info(`Connected to the database`);
-
-  return;
+  if (status === 'connect') {
+    mongoose.connect(uri || env.DATABASE_URL);
+    log.info(`Connected to the database`);
+    return;
+  }
 };
