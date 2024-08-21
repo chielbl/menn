@@ -1,11 +1,9 @@
+import { createApp } from './../src/app';
+import { mongoTest } from './shared/utils/mongo-test';
 import { ProductCreateOrUpdate } from './../src/schemas/types/ProductCreateOrUpdate';
 import { ProductDTO } from './../src/schemas/types/ProductDTO';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import supertest from 'supertest';
-
-import createApp from '../src/server';
-import { mongooseDB } from './shared/utils/mongoose-helper';
-import e from 'express';
 
 const app = await createApp();
 
@@ -13,12 +11,12 @@ describe('Products routes', () => {
   let product: ProductDTO;
 
   beforeAll(async () => {
-    await mongooseDB('connect');
-    await mongooseDB('drop');
+    await mongoTest('connect');
+    await mongoTest('drop');
   });
 
   afterAll(async () => {
-    await mongooseDB('disconnect');
+    await mongoTest('disconnect');
   });
 
   // CRUD operations
@@ -108,7 +106,7 @@ describe('Products routes', () => {
   });
 
   it('GET all products (Not found - 404)', async () => {
-    await mongooseDB('drop');
+    await mongoTest('drop');
     const { status } = await supertest(app).get('/api/products');
 
     expect(status).toBe(404);

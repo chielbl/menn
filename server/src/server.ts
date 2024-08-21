@@ -1,50 +1,36 @@
-//Is a package for Express.js that simplifies error handling for asynchronous routes and middleware
-import 'express-async-errors';
-import express, { type Express } from 'express';
-import { Server } from 'http';
-import type { Connection } from 'mongoose';
 import { log } from './shared/log';
-import { errorHandler, logHandler, security } from './middlewares';
-import { productRouter, swaggerRouter } from './routes';
+import { createApp } from './app';
+import { env, logEnvAppInfo } from './shared';
+import { mongo } from './db';
+
+export const fullPath = `http://${env.HOST}:${env.PORT}`;
 
 /**
- * Creates and configures an Express application.
+ * Initializes and starts the server, including creating the app instance,
+ * connecting to the database, and setting up server shutdown handling.
  *
- * @returns {Promise<Express>} A promise that resolves to an instance of Express.
+ * @async
+ * @function start
+ * @returns {Promise<void>} A promise that resolves when the server is started successfully.
+ *
+ * @throws {Error} If an error occurs during the server startup or database connection.
  */
-export default async (): Promise<Express> => {
-  // Initialize the Express application
-  const app = express();
+(async function start() {
+  logEnvAppInfo();
 
-  // Middlewares
-  app.use(logHandler);
-  app.use(express.json());
-  app.use(security);
+  // Create the application instance
+  const app = await createApp();
 
-  // Routes
-  app.get('/', (_req, res) => {
-    res.send('Hello, Express app!');
+  // Connect to the database
+  mongo('connect');
+
+  // Start the server and log the running information
+  const server = app.listen(env.PORT, () => {
+    log.info(`Server is running on ${fullPath}`);
   });
-  app.use('/api-docs', swaggerRouter);
-  app.use('/api/products', productRouter);
 
-  // Error handling middleware convert thrown errors to HTTP responses
-  app.use(errorHandler);
-
-  // Return the configured Express app instance
-  return app;
-};
-
-/**
- * Sets up handlers to gracefully shut down the server and close the database connection
- * upon receiving termination signals.
- *
- * @param {Server} server - The HTTP server instance to be closed.
- * @param {Connection} databaseConnection - The database connection to be closed.
- */
-export const shutdown = (server: Server, databaseConnection: Connection) => {
-  // List of signals to listen for
-  const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM', 'SIGQUIT'];
+  // Handle server shutdown and cleanup
+  const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM', 'SIGQUIT']; // List of signals to listen for
 
   for (const signal of signals) {
     process.on(signal, () => {
@@ -56,11 +42,11 @@ export const shutdown = (server: Server, databaseConnection: Connection) => {
         if (!error) log.info('Server closed.');
 
         // Close the database connection
-        databaseConnection.close();
+        mongo('disconnect');
 
         // Exit the process with the appropriate status code
         process.exit(error ? 1 : 0);
       });
     });
   }
-};
+})().catch((error) => log.error(error, 'Server failed to start'));

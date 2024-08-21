@@ -1,5 +1,5 @@
+import { fullPath } from '@/server';
 import { log } from '@/shared';
-import { fullPath } from '@/main';
 import type { RequestHandler } from 'express';
 
 export const logHandler: RequestHandler = (req, res, next) => {

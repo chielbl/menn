@@ -6,6 +6,8 @@ type Env = {
   HOST: string;
   PORT: string;
   DATABASE_URL: string;
+  DATABASE_URL_TEST: string;
+  DATABASE_URL_API_TEST: string;
 };
 
 // Fetch variables from environment
@@ -13,6 +15,8 @@ export const env: Env = {
   HOST: process.env.HOST!,
   PORT: process.env.PORT!,
   DATABASE_URL: process.env.DATABASE_URL!,
+  DATABASE_URL_TEST: process.env.DATABASE_URL_TEST!,
+  DATABASE_URL_API_TEST: process.env.DATABASE_URL_API_TEST!,
 };
 
 export const logEnvAppInfo = () => {
