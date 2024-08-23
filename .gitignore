@@ -1,0 +1,38 @@
+# Node.js specific files
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+.pnpm-debug.log
+.pnp/
+.pnp.js
+
+# Logs
+logs
+*.log
+logs/*.log
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variable files
+.env
+.env.test
+.env.production
+
+# build output
+dist/
+
+# Gatsby files
+.cache/
+public/
+
+# IDE specific files
+.idea/
+.vscode/

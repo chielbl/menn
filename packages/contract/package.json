@@ -1,0 +1,35 @@
+{
+  "name": "@repo/contract",
+  "version": "1.0.0",
+  "description": "Contract first development",
+  "exports": {
+    "./kubb": "./kubb/index.js",
+    "./kubb-types": "./kubb/types/index.js",
+    "./kubb-schemas": "./kubb/schemas/index.js",
+    "./kubb-hooks": "./kubb/hooks/index.js",
+    "./contract-openapi": "./tsp-openapi/openapi.json"
+  },
+  "scripts": {
+    "gen": "npm run gen:tsp && npm run gen:kubb",
+    "gen:tsp": "tsp --config ./tspconfig.yaml compile ./tsp-openapi",
+    "gen:kubb": "kubb --config kubb.config.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@typespec/compiler": "^0.58.1",
+    "@typespec/http": "^0.58.0",
+    "@typespec/openapi": "^0.58.0",
+    "@typespec/openapi3": "^0.58.0",
+    "@typespec/rest": "^0.58.0",
+    "@typespec/versioning": "^0.58.0",
+    "@kubb/cli": "^2.25.1",
+    "@kubb/core": "^2.25.1",
+    "@kubb/plugin-oas": "^2.25.1",
+    "@kubb/swagger": "^2.25.1",
+    "@kubb/swagger-swr": "^2.25.1",
+    "@kubb/swagger-ts": "^2.25.1",
+    "@kubb/swagger-zod": "^2.25.1",
+    "zod": "^3.23.8"
+  }
+}

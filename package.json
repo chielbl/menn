@@ -1,0 +1,16 @@
+{
+  "name": "menn",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "pnpm --parallel start",
+    "dev": "pnpm --parallel dev",
+    "build": "pnpm --parallel build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "copy-files-from-to": "^3.9.1"
+  }
+}
