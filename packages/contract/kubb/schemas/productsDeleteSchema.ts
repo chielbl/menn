@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { productSchema } from "./productSchema";
-import { errorSchema } from "./errorSchema";
+import { serverErrorSchema } from "./serverErrorSchema";
 
 
 export const productsDeletePathParamsSchema = z.object({ "id": z.string() });
@@ -13,9 +13,9 @@ export const productsDelete200Schema = z.lazy(() => productSchema);
  */
 export const productsDelete204Schema = z.any();
 /**
- * @description An unexpected error response.
+ * @description Server error
  */
-export const productsDeleteErrorSchema = z.lazy(() => errorSchema);
+export const productsDelete500Schema = z.lazy(() => serverErrorSchema);
 /**
  * @description The request has succeeded.
  */

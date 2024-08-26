@@ -1,16 +1,17 @@
 import { z } from "zod";
+import { paginatedMetaSchema } from "./paginatedMetaSchema";
 import { productSchema } from "./productSchema";
-import { errorSchema } from "./errorSchema";
+import { serverErrorSchema } from "./serverErrorSchema";
 
  /**
  * @description The request has succeeded.
  */
-export const productsGetAll200Schema = z.array(z.lazy(() => productSchema));
+export const productsGetAll200Schema = z.object({ "meta": z.lazy(() => paginatedMetaSchema), "data": z.array(z.lazy(() => productSchema)) });
 /**
- * @description An unexpected error response.
+ * @description Server error
  */
-export const productsGetAllErrorSchema = z.lazy(() => errorSchema);
+export const productsGetAll500Schema = z.lazy(() => serverErrorSchema);
 /**
  * @description The request has succeeded.
  */
-export const productsGetAllQueryResponseSchema = z.array(z.lazy(() => productSchema));
+export const productsGetAllQueryResponseSchema = z.object({ "meta": z.lazy(() => paginatedMetaSchema), "data": z.array(z.lazy(() => productSchema)) });

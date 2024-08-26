@@ -1,18 +1,32 @@
-import { Error } from "../../Error";
+import { ServerError } from "../../ServerError";
+import type { PaginatedMeta } from "../../PaginatedMeta";
 import type { Product } from "../../Product";
 
  /**
  * @description The request has succeeded.
 */
-export type ProductsGetAll200 = Product[];
+export type ProductsGetAll200 = {
+    meta: PaginatedMeta;
+    /**
+     * @type array
+    */
+    data: Product[];
+};
 /**
- * @description An unexpected error response.
+ * @description Server error
 */
-export type ProductsGetAllError = Error;
+export type ProductsGetAll500 = ServerError;
 /**
  * @description The request has succeeded.
 */
-export type ProductsGetAllQueryResponse = Product[];
+export type ProductsGetAllQueryResponse = {
+    meta: PaginatedMeta;
+    /**
+     * @type array
+    */
+    data: Product[];
+};
 export type ProductsGetAllQuery = {
     Response: ProductsGetAllQueryResponse;
+    Errors: ProductsGetAll500;
 };

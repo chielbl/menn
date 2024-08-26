@@ -49,7 +49,7 @@ import { Review } from "./Review";
     */
     createdAt: string;
     /**
-     * @description The date & time åthe resources was last updated
+     * @description The date & time the resources was last updated
      * @type string, date-time
     */
     updatedAt: string;

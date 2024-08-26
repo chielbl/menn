@@ -11,19 +11,9 @@ model PaginatedMeta {
   @example(10)
   totalPages: integer;
 
-  @example(1)
+  @example(2)
   nextPage: integer;
 
-  @example(1)
+  @example(0)
   prevPage: integer;
-
-  @example(10)
-  curPage: integer;
-}
-
-model PaginatedData<T> {
-  meta: PaginatedMeta;
-
-  @example(#[])
-  data: T[];
 }

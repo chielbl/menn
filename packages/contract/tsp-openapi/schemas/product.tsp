@@ -53,12 +53,12 @@ model Product {
 
   reviews: Review[];
 
-  // ...Meta;
-  @doc("The date & time the resources was created")
-  @visibility("read","query")
-  createdAt: utcDateTime;
+  ...Meta;
+  // @doc("The date & time the resources was created")
+  // @visibility("read","query")
+  // createdAt: utcDateTime;
 
-  @doc("The date & time åthe resources was last updated")
-  @visibility("read","query")
-  updatedAt: utcDateTime;
+  // @doc("The date & time åthe resources was last updated")
+  // @visibility("read","query")
+  // updatedAt: utcDateTime;
 }

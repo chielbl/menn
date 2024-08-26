@@ -1,5 +1,6 @@
 import { BadRequest } from "../../BadRequest";
-import { Error } from "../../Error";
+import { NotFound } from "../../NotFound";
+import { ServerError } from "../../ServerError";
 import { ProductCreateOrUpdate } from "../../ProductCreateOrUpdate";
 import type { Product } from "../../Product";
 
@@ -18,9 +19,13 @@ export type ProductsUpdate200 = Product;
 */
 export type ProductsUpdate400 = BadRequest;
 /**
- * @description An unexpected error response.
+ * @description The server cannot find the requested resource.
 */
-export type ProductsUpdateError = Error;
+export type ProductsUpdate404 = NotFound;
+/**
+ * @description Server error
+*/
+export type ProductsUpdate500 = ServerError;
 export type ProductsUpdateMutationRequest = ProductCreateOrUpdate;
 /**
  * @description The request has succeeded.
@@ -30,5 +35,5 @@ export type ProductsUpdateMutation = {
     Response: ProductsUpdateMutationResponse;
     Request: ProductsUpdateMutationRequest;
     PathParams: ProductsUpdatePathParams;
-    Errors: ProductsUpdate400;
+    Errors: ProductsUpdate400 | ProductsUpdate404 | ProductsUpdate500;
 };

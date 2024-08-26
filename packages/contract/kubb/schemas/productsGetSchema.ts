@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { productSchema } from "./productSchema";
 import { notFoundSchema } from "./notFoundSchema";
-import { errorSchema } from "./errorSchema";
+import { serverErrorSchema } from "./serverErrorSchema";
 
 
 export const productsGetPathParamsSchema = z.object({ "id": z.string() });
@@ -14,9 +14,9 @@ export const productsGet200Schema = z.lazy(() => productSchema);
  */
 export const productsGet404Schema = z.lazy(() => notFoundSchema);
 /**
- * @description An unexpected error response.
+ * @description Server error
  */
-export const productsGetErrorSchema = z.lazy(() => errorSchema);
+export const productsGet500Schema = z.lazy(() => serverErrorSchema);
 /**
  * @description The request has succeeded.
  */

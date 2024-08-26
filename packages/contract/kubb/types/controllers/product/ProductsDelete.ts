@@ -1,4 +1,4 @@
-import { Error } from "../../Error";
+import { ServerError } from "../../ServerError";
 import type { Product } from "../../Product";
 
  export type ProductsDeletePathParams = {
@@ -16,9 +16,9 @@ export type ProductsDelete200 = Product;
 */
 export type ProductsDelete204 = any;
 /**
- * @description An unexpected error response.
+ * @description Server error
 */
-export type ProductsDeleteError = Error;
+export type ProductsDelete500 = ServerError;
 /**
  * @description The request has succeeded.
 */
@@ -26,4 +26,5 @@ export type ProductsDeleteMutationResponse = Product;
 export type ProductsDeleteMutation = {
     Response: ProductsDeleteMutationResponse;
     PathParams: ProductsDeletePathParams;
+    Errors: ProductsDelete500;
 };

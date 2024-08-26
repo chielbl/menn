@@ -1,12 +1,12 @@
 import useSWRMutation from "swr/mutation";
 import client from "@kubb/swagger-client/client";
 import type { SWRMutationConfiguration, SWRMutationResponse } from "swr/mutation";
-import type { ProductsCreateMutationRequest, ProductsCreateMutationResponse, ProductsCreate400 } from "../../types/controllers/product/ProductsCreate";
+import type { ProductsCreateMutationRequest, ProductsCreateMutationResponse, ProductsCreate400, ProductsCreate500 } from "../../types/controllers/product/ProductsCreate";
 
- type ProductsCreateClient = typeof client<ProductsCreateMutationResponse, ProductsCreate400, ProductsCreateMutationRequest>;
+ type ProductsCreateClient = typeof client<ProductsCreateMutationResponse, ProductsCreate400 | ProductsCreate500, ProductsCreateMutationRequest>;
 type ProductsCreate = {
     data: ProductsCreateMutationResponse;
-    error: ProductsCreate400;
+    error: ProductsCreate400 | ProductsCreate500;
     request: ProductsCreateMutationRequest;
     pathParams: never;
     queryParams: never;

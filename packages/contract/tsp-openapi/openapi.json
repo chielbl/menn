@@ -27,20 +27,33 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Product"
+                  "type": "object",
+                  "required": [
+                    "meta",
+                    "data"
+                  ],
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/PaginatedMeta"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Product"
+                      },
+                      "example": []
+                    }
                   }
                 }
               }
             }
           },
-          "default": {
-            "description": "An unexpected error response.",
+          "500": {
+            "description": "Server error",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/ServerError"
                 }
               }
             }
@@ -74,12 +87,12 @@
               }
             }
           },
-          "default": {
-            "description": "An unexpected error response.",
+          "500": {
+            "description": "Server error",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/ServerError"
                 }
               }
             }
@@ -134,12 +147,12 @@
               }
             }
           },
-          "default": {
-            "description": "An unexpected error response.",
+          "500": {
+            "description": "Server error",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/ServerError"
                 }
               }
             }
@@ -175,12 +188,12 @@
           "204": {
             "description": "There is no content to send for this request, but the headers may be useful. "
           },
-          "default": {
-            "description": "An unexpected error response.",
+          "500": {
+            "description": "Server error",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/ServerError"
                 }
               }
             }
@@ -223,12 +236,22 @@
               }
             }
           },
-          "default": {
-            "description": "An unexpected error response.",
+          "404": {
+            "description": "The server cannot find the requested resource.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerError"
                 }
               }
             }
@@ -283,23 +306,6 @@
         ],
         "example": "Cookie"
       },
-      "Error": {
-        "type": "object",
-        "required": [
-          "code",
-          "message"
-        ],
-        "properties": {
-          "code": {
-            "type": "string",
-            "example": "XXX"
-          },
-          "message": {
-            "type": "string",
-            "example": "Error"
-          }
-        }
-      },
       "NotFound": {
         "type": "object",
         "required": [
@@ -315,6 +321,43 @@
             "type": "string",
             "example": "Not Found",
             "description": "A more descriptive message about the error"
+          }
+        }
+      },
+      "PaginatedMeta": {
+        "type": "object",
+        "required": [
+          "page",
+          "pageSize",
+          "total",
+          "totalPages",
+          "nextPage",
+          "prevPage"
+        ],
+        "properties": {
+          "page": {
+            "type": "integer",
+            "example": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "example": 10
+          },
+          "total": {
+            "type": "integer",
+            "example": 100
+          },
+          "totalPages": {
+            "type": "integer",
+            "example": 10
+          },
+          "nextPage": {
+            "type": "integer",
+            "example": 2
+          },
+          "prevPage": {
+            "type": "integer",
+            "example": 0
           }
         }
       },
@@ -407,7 +450,7 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "description": "The date & time åthe resources was last updated"
+            "description": "The date & time the resources was last updated"
           }
         }
       },
@@ -588,6 +631,24 @@
           "reviewerEmail": {
             "type": "string",
             "example": "john.doe@test.com"
+          }
+        }
+      },
+      "ServerError": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The status code for the error"
+          },
+          "message": {
+            "type": "string",
+            "example": "Server Error",
+            "description": "A more descriptive message about the error"
           }
         }
       },

@@ -1,12 +1,12 @@
 import useSWR from "swr";
 import client from "@kubb/swagger-client/client";
 import type { SWRConfiguration, SWRResponse } from "swr";
-import type { ProductsGetQueryResponse, ProductsGetPathParams, ProductsGet404 } from "../../types/controllers/product/ProductsGet";
+import type { ProductsGetQueryResponse, ProductsGetPathParams, ProductsGet404, ProductsGet500 } from "../../types/controllers/product/ProductsGet";
 
- type ProductsGetClient = typeof client<ProductsGetQueryResponse, ProductsGet404, never>;
+ type ProductsGetClient = typeof client<ProductsGetQueryResponse, ProductsGet404 | ProductsGet500, never>;
 type ProductsGet = {
     data: ProductsGetQueryResponse;
-    error: ProductsGet404;
+    error: ProductsGet404 | ProductsGet500;
     request: never;
     pathParams: ProductsGetPathParams;
     queryParams: never;

@@ -1,8 +1,8 @@
-import { productsGetAllQueryResponseSchema } from "./productsGetAllSchema";
-import { productsCreateMutationRequestSchema, productsCreateMutationResponseSchema, productsCreate400Schema } from "./productsCreateSchema";
-import { productsGetQueryResponseSchema, productsGet404Schema, productsGetPathParamsSchema } from "./productsGetSchema";
-import { productsDeleteMutationResponseSchema, productsDeletePathParamsSchema } from "./productsDeleteSchema";
-import { productsUpdateMutationRequestSchema, productsUpdateMutationResponseSchema, productsUpdate400Schema, productsUpdatePathParamsSchema } from "./productsUpdateSchema";
+import { productsGetAllQueryResponseSchema, productsGetAll500Schema } from "./productsGetAllSchema";
+import { productsCreateMutationRequestSchema, productsCreateMutationResponseSchema, productsCreate400Schema, productsCreate500Schema } from "./productsCreateSchema";
+import { productsGetQueryResponseSchema, productsGet404Schema, productsGet500Schema, productsGetPathParamsSchema } from "./productsGetSchema";
+import { productsDeleteMutationResponseSchema, productsDelete500Schema, productsDeletePathParamsSchema } from "./productsDeleteSchema";
+import { productsUpdateMutationRequestSchema, productsUpdateMutationResponseSchema, productsUpdate400Schema, productsUpdate404Schema, productsUpdate500Schema, productsUpdatePathParamsSchema } from "./productsUpdateSchema";
 
  export const operations = { "Products_GetAll": {
         request: undefined,
@@ -13,9 +13,12 @@ import { productsUpdateMutationRequestSchema, productsUpdateMutationResponseSche
         },
         responses: {
             200: productsGetAllQueryResponseSchema,
+            500: productsGetAll500Schema,
             default: productsGetAllQueryResponseSchema
         },
-        errors: {}
+        errors: {
+            500: productsGetAll500Schema
+        }
     }, "Products_Create": {
         request: productsCreateMutationRequestSchema,
         parameters: {
@@ -26,10 +29,12 @@ import { productsUpdateMutationRequestSchema, productsUpdateMutationResponseSche
         responses: {
             200: productsCreateMutationResponseSchema,
             400: productsCreate400Schema,
+            500: productsCreate500Schema,
             default: productsCreateMutationResponseSchema
         },
         errors: {
-            400: productsCreate400Schema
+            400: productsCreate400Schema,
+            500: productsCreate500Schema
         }
     }, "Products_Get": {
         request: undefined,
@@ -41,10 +46,12 @@ import { productsUpdateMutationRequestSchema, productsUpdateMutationResponseSche
         responses: {
             200: productsGetQueryResponseSchema,
             404: productsGet404Schema,
+            500: productsGet500Schema,
             default: productsGetQueryResponseSchema
         },
         errors: {
-            404: productsGet404Schema
+            404: productsGet404Schema,
+            500: productsGet500Schema
         }
     }, "Products_Delete": {
         request: undefined,
@@ -55,9 +62,12 @@ import { productsUpdateMutationRequestSchema, productsUpdateMutationResponseSche
         },
         responses: {
             200: productsDeleteMutationResponseSchema,
+            500: productsDelete500Schema,
             default: productsDeleteMutationResponseSchema
         },
-        errors: {}
+        errors: {
+            500: productsDelete500Schema
+        }
     }, "Products_Update": {
         request: productsUpdateMutationRequestSchema,
         parameters: {
@@ -68,10 +78,14 @@ import { productsUpdateMutationRequestSchema, productsUpdateMutationResponseSche
         responses: {
             200: productsUpdateMutationResponseSchema,
             400: productsUpdate400Schema,
+            404: productsUpdate404Schema,
+            500: productsUpdate500Schema,
             default: productsUpdateMutationResponseSchema
         },
         errors: {
-            400: productsUpdate400Schema
+            400: productsUpdate400Schema,
+            404: productsUpdate404Schema,
+            500: productsUpdate500Schema
         }
     } } as const;
 export const paths = { "/api/products": {

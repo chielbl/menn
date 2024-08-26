@@ -1,6 +1,6 @@
 // Schemas
 import "./schemas/http-responses.tsp";
-import "./schemas/pagination.tsp";
+import "./schemas/paginated-data.tsp";
 
 import "@typespec/http";
 import "@typespec/openapi";
@@ -23,7 +23,7 @@ scalar id extends string;
 
 interface Routes<T> {
   @get
-  GetAll(): PaginatedData<T>[] | ServerError;
+  GetAll(): PaginatedData<T> | ServerError;
 
   @get
   Get(@path id: string): T | NotFound | ServerError;

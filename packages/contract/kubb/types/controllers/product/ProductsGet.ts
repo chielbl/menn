@@ -1,5 +1,5 @@
 import { NotFound } from "../../NotFound";
-import { Error } from "../../Error";
+import { ServerError } from "../../ServerError";
 import type { Product } from "../../Product";
 
  export type ProductsGetPathParams = {
@@ -17,9 +17,9 @@ export type ProductsGet200 = Product;
 */
 export type ProductsGet404 = NotFound;
 /**
- * @description An unexpected error response.
+ * @description Server error
 */
-export type ProductsGetError = Error;
+export type ProductsGet500 = ServerError;
 /**
  * @description The request has succeeded.
 */
@@ -27,5 +27,5 @@ export type ProductsGetQueryResponse = Product;
 export type ProductsGetQuery = {
     Response: ProductsGetQueryResponse;
     PathParams: ProductsGetPathParams;
-    Errors: ProductsGet404;
+    Errors: ProductsGet404 | ProductsGet500;
 };

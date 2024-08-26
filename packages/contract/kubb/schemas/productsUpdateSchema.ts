@@ -1,7 +1,8 @@
 import { z } from "zod";
 import { productSchema } from "./productSchema";
 import { badRequestSchema } from "./badRequestSchema";
-import { errorSchema } from "./errorSchema";
+import { notFoundSchema } from "./notFoundSchema";
+import { serverErrorSchema } from "./serverErrorSchema";
 import { productCreateOrUpdateSchema } from "./productCreateOrUpdateSchema";
 
 
@@ -15,9 +16,13 @@ export const productsUpdate200Schema = z.lazy(() => productSchema);
  */
 export const productsUpdate400Schema = z.lazy(() => badRequestSchema);
 /**
- * @description An unexpected error response.
+ * @description The server cannot find the requested resource.
  */
-export const productsUpdateErrorSchema = z.lazy(() => errorSchema);
+export const productsUpdate404Schema = z.lazy(() => notFoundSchema);
+/**
+ * @description Server error
+ */
+export const productsUpdate500Schema = z.lazy(() => serverErrorSchema);
 
  export const productsUpdateMutationRequestSchema = z.lazy(() => productCreateOrUpdateSchema);
 /**
