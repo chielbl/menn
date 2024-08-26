@@ -6,7 +6,7 @@ import {
   type Product as ProductDTO,
   productsGetPathParamsSchema,
   productsGetQueryResponseSchema,
-} from '@repo/contract/kubb';
+} from '@repo/contract';
 
 export const getHandler = async (req: Request, res: Response<ProductDTO>) => {
   const { params } = req;

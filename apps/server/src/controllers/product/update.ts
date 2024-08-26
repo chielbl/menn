@@ -8,7 +8,7 @@ import {
   productsUpdateMutationRequestSchema,
   productsUpdateMutationResponseSchema,
   productsUpdatePathParamsSchema,
-} from '@repo/contract/kubb';
+} from '@repo/contract';
 
 export const updateHandler = async (
   req: Request,

@@ -1,5 +1,5 @@
 import type { Product } from '@/db/models';
-import type { ProductDTO } from '@/schemas';
+import type { Product as ProductDTO } from '@repo/contract';
 
 export const mapperProductDTO = (product: Product): ProductDTO => {
   const { _id, name, description, category, price, createdAt, updatedAt } =

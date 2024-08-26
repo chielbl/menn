@@ -6,7 +6,7 @@ import {
   type Product as ProductDTO,
   productsDeleteMutationResponseSchema,
   productsDeletePathParamsSchema,
-} from '@repo/contract/kubb';
+} from '@repo/contract';
 
 export const deleteHandler = async (
   req: Request,

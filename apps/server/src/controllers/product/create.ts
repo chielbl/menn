@@ -6,7 +6,7 @@ import {
   type Product as ProductDTO,
   productsCreateMutationRequestSchema,
   productsCreateMutationResponseSchema,
-} from '@repo/contract/kubb';
+} from '@repo/contract';
 
 export const createHandler = async (
   req: Request,

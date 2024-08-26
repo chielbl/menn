@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "Contract first development",
   "exports": {
-    "./kubb": "./kubb/index.js",
-    "./kubb-types": "./kubb/types/index.js",
-    "./kubb-schemas": "./kubb/schemas/index.js",
-    "./kubb-hooks": "./kubb/hooks/index.js",
-    "./contract-openapi": "./tsp-openapi/openapi.json"
+    ".": {
+      "import": {
+        "default": "./kubb/index.ts"
+      }
+    },
+    "./openApi.json": {
+      "import": {
+        "default": "./tsp-openapi/openapi.json"
+      }
+    }
   },
   "scripts": {
     "gen": "npm run gen:tsp && npm run gen:kubb",

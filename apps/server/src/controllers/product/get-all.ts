@@ -5,7 +5,7 @@ import { NotFound } from '@/shared';
 import {
   type Product as ProductDTO,
   productsGetAllQueryResponseSchema,
-} from '@repo/contract/kubb';
+} from '@repo/contract';
 
 export const getAllHandler = async (
   _req: Request,
