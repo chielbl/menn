@@ -3,16 +3,8 @@
   "version": "1.0.0",
   "description": "Contract first development",
   "exports": {
-    ".": {
-      "import": {
-        "default": "./kubb/index.ts"
-      }
-    },
-    "./openApi.json": {
-      "import": {
-        "default": "./tsp-openapi/openapi.json"
-      }
-    }
+    ".": "./kubb/index.ts",
+    "./openApi.json": "./tsp-openapi/openapi.json"
   },
   "scripts": {
     "gen": "npm run gen:tsp && npm run gen:kubb",
