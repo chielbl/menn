@@ -21,6 +21,9 @@ scalar objectId extends string;
 scalar id extends string;
 
 
+// TODO: [Peter] Add NotFound error for @put
+// TODO: [Peter] Add Paging to the GetAll endpoint
+// TODO: [Peter] Replace Error with ServerError
 interface Routes<T> {
   @get
   GetAll(): T[] | Error;

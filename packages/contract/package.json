@@ -2,6 +2,7 @@
   "name": "@repo/contract",
   "version": "1.0.0",
   "description": "Contract first development",
+  "type": "module",
   "exports": {
     ".": "./kubb/index.ts",
     "./openApi.json": "./tsp-openapi/openapi.json"

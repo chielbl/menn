@@ -1,12 +1,12 @@
 import { Document, Schema, model } from 'mongoose';
 
 import {
-  availabilityStatusEnum,
-  categoryEnum,
   type AvailabilityStatus,
   type Category,
   type Review,
-} from '@repo/contract/kubb';
+} from '@repo/contract';
+
+// TODO: [Peter] Don't use types from APi contract in your mongodb models
 
 // Create an interface representing a document in MongoDB.
 export interface Product extends Document {
@@ -29,14 +29,14 @@ export interface Product extends Document {
 const productSchema = new Schema<Product>({
   name: { type: String, required: true },
   description: { type: String, required: true },
-  category: { type: String, enum: categoryEnum, required: true },
+  category: { type: String, required: true },
   price: { type: Number, required: true },
   discountPercentage: { type: Number, required: true },
   rating: { type: Number, required: true },
   stock: { type: Number, required: true },
   availabilityStatus: {
     type: String,
-    enum: availabilityStatusEnum,
+    // enum: availabilityStatusEnum,
     required: true,
   },
   thumbnail: { type: String, required: true },

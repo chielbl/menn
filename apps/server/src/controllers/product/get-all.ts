@@ -13,6 +13,7 @@ export const getAllHandler = async (
 ) => {
   const products = await ProductModel.find();
 
+  // TODO: [Peter] Don't throw an error if no products are found, just return an empty array
   if (!products.length) throw new NotFound('No products found');
 
   const productsDTO = products.map(mapperProductDTO);
