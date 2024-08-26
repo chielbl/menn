@@ -4,8 +4,10 @@
   "description": "Contract first development",
   "type": "module",
   "exports": {
-    ".": "./kubb/index.ts",
-    "./openApi.json": "./tsp-openapi/openapi.json"
+    "./doc.json": "./tsp-openapi/openapi.json",
+    "./types": "./kubb/types/index.ts",
+    "./client/hooks": "./kubb/hooks/index.ts",
+    "./server/schemas": "./kubb/schemas/index.ts"
   },
   "scripts": {
     "gen": "npm run gen:tsp && npm run gen:kubb",

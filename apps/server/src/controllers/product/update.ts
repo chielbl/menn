@@ -3,12 +3,12 @@ import { NotFound } from '@/shared';
 import type { Request, Response } from 'express';
 import { mapperProductDTO } from './mappers';
 
+import type { Product as ProductDTO } from '@repo/contract/types';
 import {
-  type Product as ProductDTO,
   productsUpdateMutationRequestSchema,
   productsUpdateMutationResponseSchema,
   productsUpdatePathParamsSchema,
-} from '@repo/contract';
+} from '@repo/contract/server/schemas';
 
 export const updateHandler = async (
   req: Request,

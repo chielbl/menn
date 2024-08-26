@@ -2,11 +2,11 @@ import { ProductModel } from '@/db/models';
 import { mapperProductDTO } from './mappers';
 import type { Request, Response } from 'express';
 import { NotFound } from '@/shared';
+import type { Product as ProductDTO } from '@repo/contract/types';
 import {
-  type Product as ProductDTO,
   productsGetPathParamsSchema,
   productsGetQueryResponseSchema,
-} from '@repo/contract';
+} from '@repo/contract/server/schemas';
 
 export const getHandler = async (req: Request, res: Response<ProductDTO>) => {
   const { params } = req;

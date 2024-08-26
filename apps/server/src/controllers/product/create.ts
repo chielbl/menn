@@ -1,12 +1,13 @@
+import { Schema } from 'mongoose';
 import { ProductModel } from '@/db/models';
 import { mapperProductDTO } from './mappers';
 import type { Request, Response } from 'express';
 
+import type { Product as ProductDTO } from '@repo/contract/types';
 import {
-  type Product as ProductDTO,
   productsCreateMutationRequestSchema,
   productsCreateMutationResponseSchema,
-} from '@repo/contract';
+} from '@repo/contract/server/schemas';
 
 export const createHandler = async (
   req: Request,

@@ -3,7 +3,7 @@ import 'express-async-errors';
 import express, { type Express } from 'express';
 import { errorHandler, logHandler, security } from './middlewares';
 import { serve, setup } from 'swagger-ui-express';
-import document from '@repo/contract/openApi.json';
+import document from '@repo/contract/doc.json';
 import { productRouter } from './routes';
 
 /**

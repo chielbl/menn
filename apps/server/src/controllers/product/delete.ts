@@ -2,11 +2,11 @@ import { ProductModel } from '@/db/models';
 import type { Request, Response } from 'express';
 import { mapperProductDTO } from './mappers';
 
+import type { Product as ProductDTO } from '@repo/contract/types';
 import {
-  type Product as ProductDTO,
   productsDeleteMutationResponseSchema,
   productsDeletePathParamsSchema,
-} from '@repo/contract';
+} from '@repo/contract/server/schemas';
 
 export const deleteHandler = async (
   req: Request,

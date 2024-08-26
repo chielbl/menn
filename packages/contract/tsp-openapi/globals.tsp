@@ -1,5 +1,6 @@
 // Schemas
 import "./schemas/http-responses.tsp";
+import "./schemas/pagination.tsp";
 
 import "@typespec/http";
 import "@typespec/openapi";
@@ -20,23 +21,19 @@ scalar objectId extends string;
 // Defined a standard id type that all models can use
 scalar id extends string;
 
-
-// TODO: [Peter] Add NotFound error for @put
-// TODO: [Peter] Add Paging to the GetAll endpoint
-// TODO: [Peter] Replace Error with ServerError
 interface Routes<T> {
   @get
-  GetAll(): T[] | Error;
+  GetAll(): PaginatedData<T>[] | ServerError;
 
   @get
-  Get(@path id: string): T | NotFound | Error;
+  Get(@path id: string): T | NotFound | ServerError;
 
   @post
-  Create(@body item: T): T | BadRequest | Error;
+  Create(@body item: T): T | BadRequest | ServerError;
 
   @delete
-  Delete(@path id: string): T | NoContent | Error;
+  Delete(@path id: string): T | NoContent | ServerError;
 
   @put
-  Update(@path id: string, @body item: T): T | BadRequest | Error;
+  Update(@path id: string, @body item: T): T | NotFound | BadRequest | ServerError;
 }

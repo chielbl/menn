@@ -1,9 +1,12 @@
-import { createApp } from './../src/app';
-import { mongoTest } from './shared/utils/mongo-test';
-import { ProductCreateOrUpdate } from './../src/schemas/types/ProductCreateOrUpdate';
-import { ProductDTO } from './../src/schemas/types/ProductDTO';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import supertest from 'supertest';
+import { createApp } from './../src/app';
+import { mongoTest } from './shared/utils/mongo-test';
+
+import type {
+  Product as ProductDTO,
+  ProductCreateOrUpdate,
+} from '@repo/contract/types';
 
 const app = await createApp();
 
@@ -83,6 +86,14 @@ describe('Products routes', () => {
     expect(body).toMatchObject(product);
   });
 
+  it('GET all products (Empty array)', async () => {
+    await mongoTest('drop');
+    const { body, status } = await supertest(app).get('/api/products');
+
+    expect(status).toBe(200);
+    expect(body.length).toEqual(0);
+  });
+
   // Error handling
   it('POST create a product with invalid data (Bad request - 400)', async () => {
     const newProduct: ProductCreateOrUpdate = {
@@ -103,13 +114,6 @@ describe('Products routes', () => {
       .send(newProduct);
 
     expect(status).toBe(400);
-  });
-
-  it('GET all products (Not found - 404)', async () => {
-    await mongoTest('drop');
-    const { status } = await supertest(app).get('/api/products');
-
-    expect(status).toBe(404);
   });
 
   it('GET product by id (Not found - 404)', async () => {

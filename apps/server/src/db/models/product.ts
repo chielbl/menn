@@ -1,26 +1,18 @@
 import { Document, Schema, model } from 'mongoose';
 
-import {
-  type AvailabilityStatus,
-  type Category,
-  type Review,
-} from '@repo/contract';
-
-// TODO: [Peter] Don't use types from APi contract in your mongodb models
-
 // Create an interface representing a document in MongoDB.
 export interface Product extends Document {
   name: string;
   description: string;
-  category: Category;
+  category: string;
   price: number;
   discountPercentage: number;
   rating: number;
   stock: number;
-  availabilityStatus: AvailabilityStatus;
+  availabilityStatus: string;
   thumbnail: string;
   images: string[];
-  reviews: Review[];
+  reviews: Object[];
   createdAt: Date;
   updatedAt: Date;
 }
