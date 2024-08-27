@@ -7,23 +7,22 @@ import {
 } from '@repo/contract/server/schemas';
 import type { PaginatedMeta } from '@repo/contract/types';
 
-const PAGE_SIZE = 2;
-
 export const getAllHandler = async (req: Request, res: Response) => {
   const { query } = req;
   const { page: pageStr, pageSize: pageSizeStr } =
     productsGetAllQueryParamsSchema.parse(query);
-  const page = pageStr ? +pageStr : 1;
-  const pageSize = pageSizeStr ? +pageSizeStr : PAGE_SIZE;
-  const total = await ProductModel.countDocuments();
-  const totalPages = Math.ceil(total / PAGE_SIZE);
+  const page = +pageStr;
+  const pageSize = +pageSizeStr;
 
-  const productsDTO =
-    (
-      await ProductModel.find()
-        .skip((page - 1) * PAGE_SIZE)
-        .limit(pageSize)
-    ).map(mapperProductDTO) || [];
+  const [total, products = []] = await Promise.all([
+    ProductModel.countDocuments(),
+    ProductModel.find()
+      .skip((page - 1) * pageSize)
+      .limit(pageSize),
+  ]);
+
+  const totalPages = Math.ceil(total / pageSize);
+  const productsDTO = products.map(mapperProductDTO);
 
   const paginatedMeta: PaginatedMeta = {
     total,
