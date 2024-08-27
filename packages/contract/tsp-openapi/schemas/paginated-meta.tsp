@@ -1,9 +1,11 @@
 model PaginatedMeta {
   @example(1)
+  @minValue(1)
   page: integer;
 
   @example(10)
-  
+  @minValue(1)
+  @maxValue(100)
   pageSize: integer;
 
   @example(100)

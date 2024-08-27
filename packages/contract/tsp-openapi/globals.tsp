@@ -23,7 +23,7 @@ scalar id extends string;
 
 interface Routes<T> {
   @get
-  GetAll(@query page:string, @query pageSize:string): PaginatedData<T> | ServerError;
+  GetAll(@query page:integer, @query pageSize:integer): PaginatedData<T> | ServerError;
 
   @get
   Get(@path id: string): T | NotFound | ServerError;

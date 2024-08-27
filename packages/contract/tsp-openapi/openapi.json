@@ -26,7 +26,7 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           },
           {
@@ -34,7 +34,7 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
@@ -354,11 +354,14 @@
         "properties": {
           "page": {
             "type": "integer",
-            "example": 1
+            "example": 1,
+            "minimum": 1
           },
           "pageSize": {
             "type": "integer",
-            "example": 10
+            "example": 10,
+            "minimum": 1,
+            "maximum": 100
           },
           "total": {
             "type": "integer",

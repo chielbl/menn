@@ -4,13 +4,13 @@ import type { Product } from "../../Product";
 
  export type ProductsGetAllQueryParams = {
     /**
-     * @type string
+     * @type integer
     */
-    page: string;
+    page: number;
     /**
-     * @type string
+     * @type integer
     */
-    pageSize: string;
+    pageSize: number;
 };
 /**
  * @description The request has succeeded.

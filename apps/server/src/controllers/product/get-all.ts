@@ -6,13 +6,14 @@ import {
   productsGetAllQueryResponseSchema,
 } from '@repo/contract/server/schemas';
 import type { PaginatedMeta } from '@repo/contract/types';
+import { z } from 'zod';
 
 export const getAllHandler = async (req: Request, res: Response) => {
   const { query } = req;
-  const { page: pageStr, pageSize: pageSizeStr } =
-    productsGetAllQueryParamsSchema.parse(query);
-  const page = +pageStr;
-  const pageSize = +pageSizeStr;
+  const { page, pageSize } = productsGetAllQueryParamsSchema.parse({
+    page: z.coerce.number().min(1).parse(query.page),
+    pageSize: z.coerce.number().min(1).max(100).parse(query.pageSize),
+  });
 
   const [total, products = []] = await Promise.all([
     ProductModel.countDocuments(),

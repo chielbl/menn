@@ -4,7 +4,7 @@ import { productSchema } from "./productSchema";
 import { serverErrorSchema } from "./serverErrorSchema";
 
 
-export const productsGetAllQueryParamsSchema = z.object({ "page": z.string(), "pageSize": z.string() });
+export const productsGetAllQueryParamsSchema = z.object({ "page": z.number(), "pageSize": z.number() });
 /**
  * @description The request has succeeded.
  */
