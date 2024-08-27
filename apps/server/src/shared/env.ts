@@ -23,7 +23,7 @@ export const logEnvAppInfo = () => {
   log.info('');
   log.info(`----------${pkg.version}----------`);
   for (const envKey in env) {
-    let envValue = env[envKey];
+    let envValue = env[envKey as keyof Env];
 
     if (envKey.includes('KEY') || envKey.includes('SECRET')) {
       envValue = envValue.slice(0, 1) + '********' + envValue.slice(-1);
