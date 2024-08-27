@@ -1,4 +1,4 @@
-import { productsGetAllQueryResponseSchema, productsGetAll500Schema } from "./productsGetAllSchema";
+import { productsGetAllQueryResponseSchema, productsGetAll500Schema, productsGetAllQueryParamsSchema } from "./productsGetAllSchema";
 import { productsCreateMutationRequestSchema, productsCreateMutationResponseSchema, productsCreate400Schema, productsCreate500Schema } from "./productsCreateSchema";
 import { productsGetQueryResponseSchema, productsGet404Schema, productsGet500Schema, productsGetPathParamsSchema } from "./productsGetSchema";
 import { productsDeleteMutationResponseSchema, productsDelete500Schema, productsDeletePathParamsSchema } from "./productsDeleteSchema";
@@ -8,7 +8,7 @@ import { productsUpdateMutationRequestSchema, productsUpdateMutationResponseSche
         request: undefined,
         parameters: {
             path: undefined,
-            query: undefined,
+            query: productsGetAllQueryParamsSchema,
             header: undefined
         },
         responses: {

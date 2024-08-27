@@ -20,7 +20,24 @@
           "Product"
         ],
         "operationId": "Products_GetAll",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "The request has succeeded.",
@@ -331,8 +348,8 @@
           "pageSize",
           "total",
           "totalPages",
-          "nextPage",
-          "prevPage"
+          "hasNextPage",
+          "hasPrevPage"
         ],
         "properties": {
           "page": {
@@ -351,13 +368,13 @@
             "type": "integer",
             "example": 10
           },
-          "nextPage": {
-            "type": "integer",
-            "example": 2
+          "hasNextPage": {
+            "type": "boolean",
+            "example": false
           },
-          "prevPage": {
-            "type": "integer",
-            "example": 0
+          "hasPrevPage": {
+            "type": "boolean",
+            "example": true
           }
         }
       },

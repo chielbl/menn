@@ -2,7 +2,17 @@ import { ServerError } from "../../ServerError";
 import type { PaginatedMeta } from "../../PaginatedMeta";
 import type { Product } from "../../Product";
 
- /**
+ export type ProductsGetAllQueryParams = {
+    /**
+     * @type string
+    */
+    page: string;
+    /**
+     * @type string
+    */
+    pageSize: string;
+};
+/**
  * @description The request has succeeded.
 */
 export type ProductsGetAll200 = {
@@ -28,5 +38,6 @@ export type ProductsGetAllQueryResponse = {
 };
 export type ProductsGetAllQuery = {
     Response: ProductsGetAllQueryResponse;
+    QueryParams: ProductsGetAllQueryParams;
     Errors: ProductsGetAll500;
 };

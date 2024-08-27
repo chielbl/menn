@@ -16,11 +16,11 @@ export type PaginatedMeta = {
     */
     totalPages: number;
     /**
-     * @type integer
+     * @type boolean
     */
-    nextPage: number;
+    hasNextPage: boolean;
     /**
-     * @type integer
+     * @type boolean
     */
-    prevPage: number;
+    hasPrevPage: boolean;
 };

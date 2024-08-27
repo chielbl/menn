@@ -3,6 +3,7 @@ model PaginatedMeta {
   page: integer;
 
   @example(10)
+  
   pageSize: integer;
 
   @example(100)
@@ -11,9 +12,9 @@ model PaginatedMeta {
   @example(10)
   totalPages: integer;
 
-  @example(2)
-  nextPage: integer;
+  @example(false)
+  hasNextPage: boolean;
 
-  @example(0)
-  prevPage: integer;
+  @example(true)
+  hasPrevPage: boolean;
 }
