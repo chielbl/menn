@@ -47,10 +47,12 @@ describe('Products routes', () => {
   });
 
   it('GET all products', async () => {
-    const { body, status } = await supertest(app).get('/api/products');
+    const { body, status } = await supertest(app).get(
+      '/api/products?page=1&pageSize=10',
+    );
 
     expect(status).toBe(200);
-    expect(body.length).toBeGreaterThan(0);
+    expect(body.data.length).toBeGreaterThan(0);
   });
 
   it('GET product by id (products/:id)', async () => {
@@ -88,10 +90,12 @@ describe('Products routes', () => {
 
   it('GET all products (Empty array)', async () => {
     await mongoTest('drop');
-    const { body, status } = await supertest(app).get('/api/products');
+    const { body, status } = await supertest(app).get(
+      '/api/products?page=1&pageSize=10',
+    );
 
     expect(status).toBe(200);
-    expect(body.length).toEqual(0);
+    expect(body.data.length).toEqual(0);
   });
 
   // Error handling
