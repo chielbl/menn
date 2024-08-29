@@ -14,30 +14,6 @@ importers:
 
   apps/client:
     dependencies:
-      '@kubb/cli':
-        specifier: ^2.25.1
-        version: 2.25.1(typescript@5.5.4)
-      '@kubb/core':
-        specifier: ^2.25.1
-        version: 2.25.1
-      '@kubb/oas':
-        specifier: ^2.25.1
-        version: 2.25.1
-      '@kubb/plugin-oas':
-        specifier: ^2.25.1
-        version: 2.25.1(@kubb/react@2.25.1)
-      '@kubb/swagger':
-        specifier: ^2.25.1
-        version: 2.25.1(@kubb/react@2.25.1)
-      '@kubb/swagger-swr':
-        specifier: ^2.25.1
-        version: 2.25.1(@kubb/react@2.25.1)(axios@1.7.4)
-      '@kubb/swagger-ts':
-        specifier: ^2.25.1
-        version: 2.25.1(@kubb/react@2.25.1)
-      '@kubb/swagger-zod':
-        specifier: ^2.25.1
-        version: 2.25.1(@kubb/react@2.25.1)
       next:
         specifier: 14.2.6
         version: 14.2.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -47,9 +23,6 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.3.1(react@18.3.1)
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.0.1
     devDependencies:
       '@types/node':
         specifier: ^20

@@ -20,7 +20,7 @@ export const createApp = async (): Promise<Express> => {
   app.use(express.json());
   app.use(security);
 
-  // Swagger
+  // Swagger / OpenAPI
   app.get('/api-docs/doc.json', (_req, res) => res.json(document));
   app.use('/api-docs/', serve, setup(document));
 
