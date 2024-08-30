@@ -1,6 +1,6 @@
 ### Variables
 @host=localhost
-@port=8000
+@port=8080
 @path=/api/products
 @baseUrl = http://{{host}}:{{port}}{{path}}
 @id=66b4ba3305211655c07ae3b8
@@ -25,7 +25,7 @@ Content-Type: application/json; charset=UTF-8
 }
 
 ### Get all products
-GET {{baseUrl}}?page=1&pageSize=10 HTTP/1.1
+GET {{baseUrl}} HTTP/1.1
 
 ### Get a single product by ID
 GET {{baseUrl}}/{{id}} HTTP/1.1

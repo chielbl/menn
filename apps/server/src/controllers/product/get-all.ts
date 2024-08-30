@@ -11,8 +11,15 @@ import { z } from 'zod';
 export const getAllHandler = async (req: Request, res: Response) => {
   const { query } = req;
   const { page, pageSize } = productsGetAllQueryParamsSchema.parse({
-    page: z.coerce.number().min(1).parse(query.page),
-    pageSize: z.coerce.number().min(1).max(100).parse(query.pageSize),
+    page: z.coerce
+      .number()
+      .min(1)
+      .parse(query.page || 1),
+    pageSize: z.coerce
+      .number()
+      .min(1)
+      .max(100)
+      .parse(query.pageSize || 10),
   });
 
   const [total, products = []] = await Promise.all([

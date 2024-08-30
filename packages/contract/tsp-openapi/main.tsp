@@ -25,7 +25,7 @@ using TypeSpec.OpenAPI;
 @service({
   title: "Product Service",
 })
-@server("http://localhost:8000", "Server")
+@server("http://localhost:8080", "Server")
 
 namespace Shop;
 
