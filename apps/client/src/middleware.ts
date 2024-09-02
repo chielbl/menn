@@ -1,6 +1,6 @@
-import { chain, securityHeaders } from './middlewares';
+import { chain, securityHeaders, errorHandler } from './middlewares';
 
-export default chain([securityHeaders]);
+export default chain([securityHeaders, errorHandler]);
 
 export const config = {
   matcher: [
