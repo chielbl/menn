@@ -1,7 +1,11 @@
 import type { Request, Response, NextFunction } from 'express';
 
 // Security Headers
-export const security = (req: Request, res: Response, next: NextFunction) => {
+export const securityHeaders = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   const { path } = req;
 
   if (!path.includes('api-docs')) {

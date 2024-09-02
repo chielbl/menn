@@ -1,7 +1,7 @@
 //Is a package for Express.js that simplifies error handling for asynchronous routes and middleware
 import 'express-async-errors';
 import express, { type Express } from 'express';
-import { errorHandler, logHandler, security } from './middlewares';
+import { errorHandler, logHandler, securityHeaders } from './middlewares';
 import { serve, setup } from 'swagger-ui-express';
 import document from '@repo/contract/doc.json';
 import { productRouter } from './routes';
@@ -18,7 +18,7 @@ export const createApp = async (): Promise<Express> => {
   // Middlewares
   app.use(logHandler);
   app.use(express.json());
-  app.use(security);
+  app.use(securityHeaders);
 
   // Swagger / OpenAPI
   app.get('/api-docs/doc.json', (_req, res) => res.json(document));
