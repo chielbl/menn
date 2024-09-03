@@ -1,0 +1,17 @@
+{
+  "name": "@repo/ui",
+  "version": "1.0.0",
+  "description": "UI package",
+  "author": "Chiel Bleyenbergh",
+  "license": "ISC",
+  "types": "module",
+  "exports": {
+    "./theme": "./theme/pollen.css"
+  },
+  "scripts": {
+    "gen:pollen": "pollen -c ./theme/pollen.config.mjs"
+  },
+  "dependencies": {
+    "pollen-css": "^5.0.1"
+  }
+}

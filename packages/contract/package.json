@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Contract first development",
   "type": "module",
+  "author": "Chiel Bleyenbergh",
+  "license": "ISC",
   "exports": {
     "./doc.json": "./tsp-openapi/openapi.json",
     "./types": "./kubb/types/index.ts",
@@ -14,8 +16,6 @@
     "gen:tsp": "tsp --config ./tspconfig.yaml compile ./tsp-openapi",
     "gen:kubb": "kubb --config kubb.config.ts"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@typespec/compiler": "^0.58.1",
     "@typespec/http": "^0.58.0",

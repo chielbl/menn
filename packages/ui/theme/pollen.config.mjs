@@ -1,0 +1,57 @@
+import { defineConfig } from 'pollen-css/utils';
+
+export default defineConfig((pollen) => ({
+  output: './theme/pollen.css',
+  modules: {
+    color: {
+      primary: '#eac07a',
+      'primary-content': '#3b1d0f',
+      secondary: '#6f3d1f',
+      'secondary-content': '#fdf9ef',
+      accent: '#00a619',
+      'accent-content': '#3b1d0f',
+      base: '#fdf9ef',
+      'base-100': '#faf0da',
+      'base-200': '#f3ddb5',
+      'base-content': '#3b1d0f',
+      white: '#ffffff',
+      black: '#000000',
+      gray: '#eee',
+      info: '#60a2fa',
+      'info-bg': '#dbeafe',
+      'info-content': '#173154',
+      success: '#4ade7d',
+      'success-bg': '#dcfce7',
+      'success-content': '#052e13',
+      warning: '#fae715',
+      'warning-bg': '#fef9c3',
+      'warning-content': '#423d06',
+      danger: '#f87171',
+      'danger-bg': '#fee2e2',
+      'danger-content': '#450a0a',
+    },
+    //  Typography
+    font: false,
+    weight: false,
+    line: false,
+    letter: false,
+    prose: false,
+    //  Layout
+    size: false,
+    ratio: false,
+    width: {
+      '--width-xs': '480px',
+      '--width-sm': '720px',
+      '--width-md': '1080px',
+      '--width-lg': '1440px',
+      '--width-xl': '2160px',
+      '--width-min': 'min-content',
+      '--width-max': 'max-content',
+      '--width-fluid': '100%',
+      '--width-screen': '100vw',
+    },
+    //  UI
+    ease: false,
+    layer: false,
+  },
+}));
