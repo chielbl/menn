@@ -12,6 +12,7 @@
     "gen:pollen": "pollen -c ./theme/pollen.config.mjs"
   },
   "dependencies": {
+    "client": "^0.0.1",
     "pollen-css": "^5.0.1"
   }
 }

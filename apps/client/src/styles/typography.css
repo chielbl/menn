@@ -1,0 +1,17 @@
+@import '@repo/ui/theme';
+
+p {
+  font-size: var(--scale-fluid-4);
+}
+
+h1 {
+  font-size: var(--scale-fluid-7);
+}
+
+h2 {
+  font-size: var(--scale-fluid-6);
+}
+
+h3 {
+  font-size: var(--scale-fluid-5);
+}

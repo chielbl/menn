@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Ubuntu:ital@0;1&display=swap');
+@import '@repo/ui/theme';
+@import './typography.css';
+
+:root {
+  /* Breakpoints */
+  /* 
+  phone: '30em', // Phablet => @media (min-width: 480px) { ... }
+  tab: '45em', // Tablet Landscape => @media (min-width: 720px) { ... }
+  desk: '64em', // Desktop => @media (min-width: 1024px) { ... }
+  '2k': '90em', // Ultra 2k => @media (min-width: 1440px) { ... }
+  '4k': '135em', // Ultra 4k => @media (min-width: 2160px) { ... } 
+  */
+
+  /* Font */
+  --font-fam-accent: 'Pacifico', 'Roboto', 'Open sans', 'Lato', sans-serif;
+
+  /* Color */
+  --color-base: #fdf9ef;
+  --color-base-100: #faf0da;
+  --color-base-200: #f3ddb5;
+  --color-base-content: #3b1d0f;
+  --color-primary: #eac07a;
+  --color-primary-content: #3b1d0f;
+  --color-secondary: #6f3d1f;
+  --color-secondary-content: #fdf9ef;
+  --color-accent: #00a619;
+  --color-accent-content: #003609;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
+  color: var(--color-base-content);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  box-sizing: border-box;
+}

@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "copy-files-from-to": "^3.9.1"
+    "copy-files-from-to": "^3.9.1",
+    "ui": "^0.2.4"
   }
 }
