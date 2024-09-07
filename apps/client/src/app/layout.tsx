@@ -1,6 +1,7 @@
+import '@/styles/globals.css';
+import 'animate.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@/styles/globals.css';
 import { headers } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'] });

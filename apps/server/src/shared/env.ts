@@ -5,6 +5,8 @@ import { log } from '.';
 type Env = {
   HOST: string;
   PORT: string;
+  LOG_ENABLED: string;
+  LOG_LEVEL: string;
   DATABASE_URL: string;
   DATABASE_URL_TEST: string;
   DATABASE_URL_API_TEST: string;
@@ -14,6 +16,8 @@ type Env = {
 export const env: Env = {
   HOST: process.env.HOST!,
   PORT: process.env.PORT!,
+  LOG_ENABLED: process.env.LOG_ENABLED!,
+  LOG_LEVEL: process.env.LOG_LEVEL!,
   DATABASE_URL: process.env.DATABASE_URL!,
   DATABASE_URL_TEST: process.env.DATABASE_URL_TEST!,
   DATABASE_URL_API_TEST: process.env.DATABASE_URL_API_TEST!,

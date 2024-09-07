@@ -1,0 +1,66 @@
+.homePage {
+  max-height: 100vh;
+  font-family: var(--font-fam-accent);
+}
+
+.logo {
+  margin-left: var(--space-md);
+  margin-top: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-df);
+}
+.logo img {
+  width: 8rem;
+  height: 8rem;
+  object-fit: contain;
+
+  @media screen and (min-width: 45em) {
+    width: 9.6rem;
+    height: 9.6rem;
+  }
+}
+.logo h3 {
+  color: var(--color-primary);
+}
+
+.slogan {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: 90%;
+  max-width: var(--width-max);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.sloganContent {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-sm) var(--space-lg);
+
+  @media screen and (min-width: 45em) {
+    padding: var(--space-md) var(--space-xl);
+  }
+}
+.sloganContent h1 span {
+  color: var(--color-accent);
+}
+.slogan button {
+  display: block;
+  margin: auto;
+  color: var(--color-primary);
+}
+
+.bgVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.25);
+}

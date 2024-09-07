@@ -36,3 +36,4 @@ public/
 # IDE specific files
 .idea/
 .vscode/
+.DS_Store

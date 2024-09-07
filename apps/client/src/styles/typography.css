@@ -1,17 +1,39 @@
 @import '@repo/ui/theme';
 
 p {
-  font-size: var(--scale-fluid-4);
+  font-size: var(--scale-fluid-3);
+
+  @media (min-width: 45em) {
+    font-size: var(--scale-fluid-4);
+  }
 }
 
 h1 {
-  font-size: var(--scale-fluid-7);
+  font-size: var(--scale-fluid-6);
+
+  @media (min-width: 45em) {
+    font-size: var(--scale-fluid-8);
+  }
+  @media (min-width: 90em) {
+    font-size: var(--scale-fluid-10);
+  }
 }
 
 h2 {
-  font-size: var(--scale-fluid-6);
+  font-size: var(--scale-fluid-5);
+
+  @media (min-width: 45em) {
+    font-size: var(--scale-fluid-6);
+  }
+  @media (min-width: 90em) {
+    font-size: var(--scale-fluid-8);
+  }
 }
 
 h3 {
-  font-size: var(--scale-fluid-5);
+  font-size: var(--scale-fluid-4);
+
+  @media (min-width: 45em) {
+    font-size: var(--scale-fluid-5);
+  }
 }

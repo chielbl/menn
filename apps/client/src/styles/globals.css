@@ -26,6 +26,15 @@
   --color-secondary-content: #fdf9ef;
   --color-accent: #00a619;
   --color-accent-content: #003609;
+
+  /* Spacing */
+  --space-px: 0.1rem;
+  --space-xs: 0.4rem;
+  --space-sm: 0.8rem;
+  --space-md: 1.2rem;
+  --space-df: 1.6rem;
+  --space-lg: 2.4rem;
+  --space-xl: 3.2rem;
 }
 
 * {
@@ -43,7 +52,6 @@ html {
   font-size: 62.5%;
 }
 
-html,
 body {
   padding: 0;
   margin: 0;
@@ -63,4 +71,10 @@ body {
   font-size: 1.6rem;
   line-height: 1.6;
   box-sizing: border-box;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }

@@ -1,14 +1,15 @@
 import { NextFetchEvent, NextMiddleware, NextRequest } from 'next/server';
 import { MiddlewareFactory } from './types';
+import { env } from '@/shared';
 
 const generateCsp = () => {
   const nonceKey = Buffer.from(crypto.randomUUID()).toString('base64');
   const csp = `
     default-src 'self';
     script-src 'self' 'nonce-${nonceKey}' 'strict-dynamic';
-    style-src 'self' 'nonce-${nonceKey}';
+    style-src 'self' 'nonce-${nonceKey}' fonts.googleapis.com;
     img-src 'self' blob: data:;
-    font-src 'self';
+    font-src 'self' fonts.gstatic.com;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
@@ -27,7 +28,8 @@ export const securityHeaders: MiddlewareFactory = (next: NextMiddleware) => {
     const { csp, nonceKey } = generateCsp();
 
     if (res) {
-      res.headers.set('Content-Security-Policy', csp);
+      const cspHeaderName = `Content-Security-Policy-${env.NODE_ENV !== 'production' && 'Report-Only'}`;
+      res.headers.set(cspHeaderName, csp);
       res.headers.set('x-nonce', nonceKey);
     }
 
