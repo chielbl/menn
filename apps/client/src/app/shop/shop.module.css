@@ -1,0 +1,32 @@
+.shopPage {
+  background-color: var(--color-base);
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin-left: var(--space-md);
+  margin-top: var(--space-xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo img {
+  width: 6.4rem;
+  height: 6.4rem;
+  object-fit: contain;
+
+  @media screen and (min-width: 45em) {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+.logo h3 {
+  color: var(--color-secondary);
+  font-size: 90%;
+}

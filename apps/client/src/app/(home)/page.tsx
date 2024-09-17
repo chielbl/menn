@@ -1,30 +1,8 @@
-'use client';
-
 import styles from './home.module.css';
 import { ChevronDown } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import Link from 'next/link';
 
 export default function HomePage() {
-  const [redirectToShop, setRedirectToShop] = useState(false);
-  const router = useRouter();
-
-  const handlerRedirectToShop = () => {
-    if (!redirectToShop) {
-      setRedirectToShop(true);
-      router.push('/shop');
-    }
-  };
-
-  // Once you scrolling or pressing space balk, down key it will redirect to the shop
-  if (!redirectToShop) {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        handlerRedirectToShop();
-      }
-    });
-  }
-
   return (
     <section id="home_page" className={styles.homePage}>
       <div className={styles.logo}>
@@ -40,12 +18,16 @@ export default function HomePage() {
           <h1>happy cookies</h1>
         </div>
 
-        <button
-          className="animate__animated animate__flash animate__infinite animate__delay-2s animate__slower"
-          onClick={handlerRedirectToShop}
+        <Link
+          href="/shop"
+          className="animate__animated animate__fadeIn animate__delay-2s"
         >
-          <ChevronDown size={24} />
-        </button>
+          Shop now
+          <ChevronDown
+            className="animate__animated animate__fadeInDown animate__infinite animate__delay-2s animate__slow"
+            size={24}
+          />
+        </Link>
       </div>
 
       <video className={styles.bgVideo} autoPlay loop muted>
