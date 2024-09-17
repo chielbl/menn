@@ -1,2 +1,2 @@
-export { Logo } from './logo';
-export { UniqueSellingPoints } from './unique-selling-points';
+export { default as Logo } from './logo/Logo';
+export { default as UniqueSellingPoints } from './unique-selling-points/UniqueSellingPoints';

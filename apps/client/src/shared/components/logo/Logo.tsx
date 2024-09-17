@@ -1,12 +1,10 @@
-interface LogoProps {
-  styles: string;
-}
+interface LogoProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-function Logo({ styles }: LogoProps) {
+function Logo({ ...rest }: LogoProps) {
   return (
-    <div className={styles}>
-      <img src="/cookie-logo/happy-cookie.webp" alt="logo" />
-      <h3>Happy cookie</h3>
+    <div {...rest}>
+      <img src="/cookie-logo/happy-cookie.webp" alt="Happy cookie" />
+      <h3>Happy Cookie</h3>
     </div>
   );
 }
