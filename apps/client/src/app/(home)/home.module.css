@@ -37,7 +37,8 @@
 }
 .sloganContent {
   background-color: var(--color-primary);
-  color: var(--color-secondary);
+  text-align: center;
+  color: var(--color-secondary-content);
   border-radius: var(--radius-xl);
   padding: var(--space-sm) var(--space-lg);
 
@@ -47,6 +48,9 @@
 }
 .sloganContent h1 span {
   color: var(--color-accent);
+}
+.sloganContent h1:last-child {
+  color: var(--color-secondary);
 }
 .slogan a {
   display: flex;
