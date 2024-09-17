@@ -1,4 +1,4 @@
-import { Logo, UniqueSellingPoints } from '@/shared/components';
+import { Logo } from '@/shared/components';
 import styles from './shop.module.css';
 import { ShoppingBasket } from 'lucide-react';
 

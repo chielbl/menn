@@ -1,0 +1,42 @@
+.uniqueSellingPoints {
+  display: flex;
+  justify-content: space-around;
+  padding: var(--space-sm);
+  background-color: var(--color-base-200);
+  gap: var(--space-sm);
+
+  @media screen and (min-width: 45em) {
+    justify-content: space-evenly;
+  }
+}
+
+.usp {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+
+  @media screen and (min-width: 30em) {
+    flex-direction: row;
+    text-align: unset;
+    gap: var(--space-sm);
+  }
+
+  @media screen and (min-width: 45em) {
+    word-spacing: var(--space-px);
+  }
+}
+.usp p {
+  font-size: var(--scale-0);
+
+  @media screen and (min-width: 45em) {
+    font-size: var(--scale-1);
+  }
+}
+
+.icon {
+  color: var(--color-accent);
+  height: var(--icon-md);
+  width: var(--icon-md);
+}

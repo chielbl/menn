@@ -3,7 +3,7 @@
 p {
   font-size: var(--scale-fluid-3);
 
-  @media (min-width: 45em) {
+  @media screen and (min-width: 45em) {
     font-size: var(--scale-fluid-4);
   }
 }
@@ -11,10 +11,10 @@ p {
 h1 {
   font-size: var(--scale-fluid-6);
 
-  @media (min-width: 45em) {
+  @media screen and (min-width: 45em) {
     font-size: var(--scale-fluid-8);
   }
-  @media (min-width: 90em) {
+  @media screen and (min-width: 90em) {
     font-size: var(--scale-fluid-10);
   }
 }
@@ -22,10 +22,10 @@ h1 {
 h2 {
   font-size: var(--scale-fluid-5);
 
-  @media (min-width: 45em) {
+  @media screen and (min-width: 45em) {
     font-size: var(--scale-fluid-6);
   }
-  @media (min-width: 90em) {
+  @media screen and (min-width: 90em) {
     font-size: var(--scale-fluid-8);
   }
 }
@@ -33,7 +33,7 @@ h2 {
 h3 {
   font-size: var(--scale-fluid-4);
 
-  @media (min-width: 45em) {
+  @media screen and (min-width: 45em) {
     font-size: var(--scale-fluid-5);
   }
 }

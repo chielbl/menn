@@ -1,15 +1,12 @@
+import { Logo } from '@/shared/components';
 import styles from './home.module.css';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 
-export default function HomePage() {
+function HomePage() {
   return (
     <section id="home_page" className={styles.homePage}>
-      <div className={styles.logo}>
-        <img src="/cookie-logo/happy-cookie.webp" alt="logo" />
-        <h3>Happy cookie</h3>
-      </div>
-
+      <Logo styles={styles.logo} />
       <div className={styles.slogan}>
         <div className={styles.sloganContent}>
           <h1>
@@ -39,3 +36,5 @@ export default function HomePage() {
     </section>
   );
 }
+
+export default HomePage;
