@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useCallback } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-const categoryIcons: Record<Category, React.ReactNode> = {
+const CATEGORY_ICONS: Record<Category, React.ReactNode> = {
   cookie: <Cookie />,
   drank: <CupSoda />,
   gifts: <Gift />,
@@ -34,19 +34,22 @@ function CategoryFilter({ customClassName }: CategoryFilterProps): JSX.Element {
     [searchParams],
   );
 
+  const getCategoryLink = (category: Category) => {
+    if (category === activeCategory) {
+      return pathname;
+    }
+    return `${pathname}?${createQueryString('category', category)}`;
+  };
+
   return (
     <ul className={customClassName || styles.categoryFilter}>
       {categories.map((category) => (
         <li key={category}>
           <Link
-            href={
-              category !== activeCategory
-                ? pathname + '?' + createQueryString('category', category)
-                : pathname
-            }
+            href={getCategoryLink(category)}
             className={category === activeCategory ? styles.active : ''}
           >
-            {categoryIcons[category]}
+            {CATEGORY_ICONS[category]}
           </Link>
         </li>
       ))}
