@@ -6,7 +6,7 @@ import Link from 'next/link';
 function HomePage() {
   return (
     <section id="home_page" className={styles.homePage}>
-      <Logo className={styles.logo} />
+      <Logo />
       <div className={styles.slogan}>
         <div className={styles.sloganContent}>
           <h1>

@@ -1,22 +1,17 @@
 import { Logo, UniqueSellingPoints } from '@/shared/components';
 import styles from './shop.module.css';
-import { Earth, Percent, ShoppingBasket } from 'lucide-react';
-import { UniqueSellingPoint } from '@/shared/components/unique-selling-points/types';
+import { ShoppingBasket } from 'lucide-react';
+import { CategoryFilter, ProductList } from './_components';
 
-const UNIQUE_SELLING_POINTS: Array<UniqueSellingPoint> = [
-  { icon: Percent, text: 'Follow us on socials for **PROMOS** en **ACTIONS**' },
-  { icon: Earth, text: '**Green earth** buy on **DISCOUNT**' },
-];
+const categories = ['Cookie', 'Drank', 'Gifts'] as const;
+export type Category = (typeof categories)[number];
 
 function ShopPage() {
   return (
     <section id="shop_page" className={styles.shopPage}>
-      <UniqueSellingPoints
-        className={styles.uniqueSellingPoints}
-        uniqueSellingPoints={UNIQUE_SELLING_POINTS}
-      />
+      <UniqueSellingPoints />
       <header className={styles.header}>
-        <Logo className={styles.logo} />
+        <Logo customClassName={styles.logo} />
         <input
           className={styles.search}
           placeholder="Search on product naam..."
@@ -26,6 +21,10 @@ function ShopPage() {
           <span>99</span>
         </div>
       </header>
+      <CategoryFilter />
+
+      {/* PRODUCTLIST*/}
+      <ProductList />
     </section>
   );
 }

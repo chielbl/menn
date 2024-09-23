@@ -1,0 +1,20 @@
+.logo {
+  margin-left: var(--space-md);
+  margin-top: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-df);
+}
+.logo img {
+  width: 8rem;
+  height: 8rem;
+  object-fit: contain;
+
+  @media screen and (min-width: 45em) {
+    width: 9.6rem;
+    height: 9.6rem;
+  }
+}
+.logo h3 {
+  color: var(--color-primary);
+}

@@ -92,3 +92,8 @@ input {
 input::placeholder {
   color: inherit;
 }
+
+ul,
+ol {
+  list-style: none;
+}
