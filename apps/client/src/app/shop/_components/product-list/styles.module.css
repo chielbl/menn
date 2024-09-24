@@ -59,6 +59,13 @@
 .cardMiddle .heading span {
   font-size: var(--scale-0);
 }
+.cardMiddle p {
+  font-size: var(--scale-1);
+
+  @media screen and (min-width: 64em) {
+    font-size: var(--scale-2);
+  }
+}
 
 .cardBottom {
   margin-top: var(--space-sm);
