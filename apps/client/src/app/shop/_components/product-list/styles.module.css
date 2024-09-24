@@ -24,26 +24,18 @@
     grid-template-columns: var(--grid-5);
   }
 }
-.product {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--color-base-200);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  border: solid 0.2rem var(--color-secondary);
-}
-.product .top {
+
+.cardTop {
   height: 16rem;
   position: relative;
 }
-.product .top img {
+.cardTop img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   /* filter: brightness(0.9); */
 }
-.product .top span {
+.cardTop span {
   position: absolute;
   right: 0.4rem;
   top: 0.4rem;
@@ -54,27 +46,27 @@
   box-shadow: var(--shadow-sm);
   border: solid 0.1rem var(--color-secondary);
 }
-.product .content {
+
+.cardMiddle {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
   padding: var(--space-md);
 }
-.product .content .heading {
-  /* display: flex;
-  gap: var(--space-md);
-  justify-content: center;
-  align-items: center; */
+.cardMiddle .heading {
   text-transform: uppercase;
 }
-.product .content .heading span {
+.cardMiddle .heading span {
   font-size: var(--scale-0);
 }
-.product button {
+
+.cardBottom {
+  margin-top: var(--space-sm);
   background-color: var(--color-secondary);
   color: var(--color-secondary-content);
-  width: var(--width-fluid);
-  margin-top: var(--space-sm);
+}
+.cardBottom button {
   padding: var(--space-md);
+  color: var(--color-secondary-content);
   text-transform: uppercase;
 }

@@ -1,0 +1,9 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-base-200);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: solid 0.2rem var(--color-secondary);
+}

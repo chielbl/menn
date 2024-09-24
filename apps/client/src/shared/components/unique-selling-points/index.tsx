@@ -17,8 +17,8 @@ function UniqueSellingPoints({
 }: UniqueSellingPointsProps): JSX.Element {
   return (
     <ul className={customClassName || styles.uniqueSellingPoints}>
-      {UNIQUE_SELLING_POINTS.map(({ icon: Icon, text, itemClick }) => (
-        <li key={text} onClick={itemClick}>
+      {UNIQUE_SELLING_POINTS.map(({ icon: Icon, text }) => (
+        <li key={text}>
           <Icon />
           <Markdown>{text}</Markdown>
         </li>
