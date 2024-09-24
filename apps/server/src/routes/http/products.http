@@ -11,17 +11,30 @@ POST {{baseUrl}} HTTP/1.1
 Content-Type: application/json; charset=UTF-8
 
 {
-  "name": "Sample Product",
-  "description": "This is a sample product description.",
-  "price": 99.99,
-  "category":"Cookie",
+  "name": "Summer box (Limoncello)",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper mi sed nisi ornare, nec ullamcorper nunc vehicula. Donec ut justo quis erat volutpat congue id eu erat. Integer ac sodales purus. Nullam congue tellus.",
+  "price": 19.99,
+  "category":"Gift",
   "discountPercentage":0,
-  "rating":0,
-  "stock":0,
+  "stock":4,
   "availabilityStatus":"Out of Stock",
-  "thumbnail":"https://via.placeholder.com/150",
+  "thumbnail":"https://sweetgirlCookies.com/wp-content/uploads/2021/01/SGC-Prod_6Big_12Classic.png",
   "images":[],
-  "reviews":[]
+  "reviews":[{
+        "rating": 5,
+        "comment": "This is a great product!",
+        "date": "2021-09-01T00:00:00Z",
+        "reviewerName": "John Doe",
+        "reviewerEmail": "JohnDoe@test.be"
+    },
+    {
+        "rating": 2,
+        "comment": "Very unhappy with my purchase!",
+        "date": "2021-09-01T00:00:00Z",
+        "reviewerName": "Dirk Pore",
+        "reviewerEmail": "DP@test.be"
+    }
+    ]
 }
 
 ### Get all products

@@ -23,10 +23,6 @@ import { Review } from "./Review";
     /**
      * @type number
     */
-    rating: number;
-    /**
-     * @type number
-    */
     stock: number;
     availabilityStatus: AvailabilityStatus;
     /**

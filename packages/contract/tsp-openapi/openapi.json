@@ -319,7 +319,9 @@
       "Category": {
         "type": "string",
         "enum": [
-          "Cookie"
+          "Cookie",
+          "Drink",
+          "Gift"
         ],
         "example": "Cookie"
       },
@@ -390,7 +392,6 @@
           "category",
           "price",
           "discountPercentage",
-          "rating",
           "stock",
           "availabilityStatus",
           "thumbnail",
@@ -412,13 +413,13 @@
             "type": "string",
             "example": "Original Cookie",
             "minLength": 1,
-            "maxLength": 20
+            "maxLength": 128
           },
           "description": {
             "type": "string",
             "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "minLength": 1,
-            "maxLength": 100
+            "maxLength": 255
           },
           "category": {
             "$ref": "#/components/schemas/Category"
@@ -432,12 +433,6 @@
             "type": "number",
             "example": 0,
             "minimum": 0
-          },
-          "rating": {
-            "type": "number",
-            "example": 0,
-            "minimum": 0,
-            "maximum": 5
           },
           "stock": {
             "type": "number",
@@ -482,7 +477,6 @@
           "category",
           "price",
           "discountPercentage",
-          "rating",
           "stock",
           "availabilityStatus",
           "thumbnail",
@@ -494,13 +488,13 @@
             "type": "string",
             "example": "Original Cookie",
             "minLength": 1,
-            "maxLength": 20
+            "maxLength": 128
           },
           "description": {
             "type": "string",
             "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "minLength": 1,
-            "maxLength": 100
+            "maxLength": 255
           },
           "category": {
             "$ref": "#/components/schemas/Category"
@@ -514,12 +508,6 @@
             "type": "number",
             "example": 0,
             "minimum": 0
-          },
-          "rating": {
-            "type": "number",
-            "example": 0,
-            "minimum": 0,
-            "maximum": 5
           },
           "stock": {
             "type": "number",
@@ -554,7 +542,6 @@
           "category",
           "price",
           "discountPercentage",
-          "rating",
           "stock",
           "availabilityStatus",
           "thumbnail",
@@ -566,13 +553,13 @@
             "type": "string",
             "example": "Original Cookie",
             "minLength": 1,
-            "maxLength": 20
+            "maxLength": 128
           },
           "description": {
             "type": "string",
             "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "minLength": 1,
-            "maxLength": 100
+            "maxLength": 255
           },
           "category": {
             "$ref": "#/components/schemas/Category"
@@ -586,12 +573,6 @@
             "type": "number",
             "example": 0,
             "minimum": 0
-          },
-          "rating": {
-            "type": "number",
-            "example": 0,
-            "minimum": 0,
-            "maximum": 5
           },
           "stock": {
             "type": "number",

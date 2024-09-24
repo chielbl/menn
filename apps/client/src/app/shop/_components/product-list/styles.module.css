@@ -1,32 +1,74 @@
 .productList {
   display: grid;
   grid-template-columns: var(--grid-page-main);
+  gap: var(--space-xl);
   text-align: center;
   justify-content: center;
   padding: var(--space-xl);
+  max-width: var(--width-xl);
+  margin: auto;
+
+  @media screen and (min-width: 30em) {
+    gap: calc(var(--space-xl) * 2) var(--space-xl);
+    grid-template-columns: var(--grid-2);
+  }
+  @media screen and (min-width: 64em) {
+    grid-template-columns: var(--grid-3);
+  }
+  @media screen and (min-width: 90em) {
+    gap: calc(var(--space-xl) * 3) calc(var(--space-xl) * 1.5);
+    grid-template-columns: var(--grid-4);
+  }
+  @media screen and (min-width: 135em) {
+    gap: calc(var(--space-xl) * 4) calc(var(--space-xl) * 2);
+    grid-template-columns: var(--grid-5);
+  }
 }
 .product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--color-base-200);
   border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: solid 0.2rem var(--color-secondary);
 }
 .product .top {
   height: 16rem;
   position: relative;
 }
+.product .top img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* filter: brightness(0.9); */
+}
 .product .top span {
   position: absolute;
-  right: 0;
-  top: 0;
-  transform: translate(25%, -25%);
-  background-color: var(--color-primary);
-  color: var(--color-primary-content);
+  right: 0.4rem;
+  top: 0.4rem;
+  z-index: 10;
+  background-color: var(--color-base-200);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  border: solid 0.1rem var(--color-secondary);
 }
 .product .content {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+  padding: var(--space-md);
+}
+.product .content .heading {
+  /* display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  align-items: center; */
+  text-transform: uppercase;
+}
+.product .content .heading span {
+  font-size: var(--scale-0);
 }
 .product button {
   background-color: var(--color-secondary);
@@ -34,4 +76,5 @@
   width: var(--width-fluid);
   margin-top: var(--space-sm);
   padding: var(--space-md);
+  text-transform: uppercase;
 }

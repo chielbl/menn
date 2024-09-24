@@ -7,7 +7,7 @@ export interface Product extends Document {
   category: string;
   price: number;
   discountPercentage: number;
-  rating: number;
+//   rating: number;
   stock: number;
   availabilityStatus: string;
   thumbnail: string;
@@ -24,7 +24,7 @@ const productSchema = new Schema<Product>({
   category: { type: String, required: true },
   price: { type: Number, required: true },
   discountPercentage: { type: Number, required: true },
-  rating: { type: Number, required: true },
+//   rating: { type: Number, required: true },
   stock: { type: Number, required: true },
   availabilityStatus: {
     type: String,

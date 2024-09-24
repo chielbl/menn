@@ -5,4 +5,6 @@ using TypeSpec.Http;
 @example(Category.Cookie)
 enum Category {
   Cookie,
+    Drink,
+    Gift
 }

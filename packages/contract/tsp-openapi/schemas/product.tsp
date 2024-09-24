@@ -17,12 +17,12 @@ model Product {
   id: objectId;
 
   @minLength(1)
-  @maxLength(20)
+  @maxLength(128)
   @example("Original Cookie")
   name: string;
 
   @minLength(1)
-  @maxLength(100)
+  @maxLength(255)
   @example("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
   description: string;
 
@@ -36,10 +36,10 @@ model Product {
   @example(0)
   discountPercentage: float;
 
-  @minValue(0)
-  @maxValue(5)
-  @example(0)
-  rating: float;
+//   @minValue(0)
+//   @maxValue(5)
+//   @example(0)
+//   rating: float;
 
   @minValue(0)
   @example(0)
