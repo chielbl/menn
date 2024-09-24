@@ -3,12 +3,22 @@
   justify-content: space-evenly;
   background-color: var(--color-base-200);
   padding: var(--space-sm) 0;
+
+  @media screen and (min-width: 64em) {
+    padding: var(--space-md) 0;
+  }
 }
 
 .categoryFilter a {
   display: flex;
   padding: var(--space-xs);
   border-radius: var(--radius-full);
+}
+.categoryFilter a svg {
+  @media screen and (min-width: 45em) {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
 }
 
 .categoryFilter .active {

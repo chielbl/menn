@@ -14,7 +14,7 @@ function ShopPage() {
           placeholder="Search on product naam..."
         />
         <div className={styles.basket}>
-          <ShoppingBasket size={24} />
+          <ShoppingBasket />
           <span>99</span>
         </div>
       </header>

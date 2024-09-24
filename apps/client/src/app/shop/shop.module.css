@@ -11,6 +11,13 @@
   padding-right: var(--space-xs);
   padding-bottom: var(--space-sm);
   background-color: var(--color-base-100);
+
+  @media screen and (min-width: 64em) {
+    padding: var(--space-md);
+  }
+  @media screen and (min-width: 135em) {
+    padding: var(--space-df);
+  }
 }
 
 .logo {
@@ -46,10 +53,13 @@
     flex: none;
     width: var(--width-xs);
   }
-
   @media screen and (min-width: 64em) {
     width: var(--width-sm);
-    padding: var(--space-sm) var(--space-df);
+    padding: var(--space-sm) var(--space-md);
+  }
+  @media screen and (min-width: 90em) {
+    width: var(--width-md);
+    padding: var(--space-md) var(--space-df);
   }
 }
 .search:focus {
@@ -60,19 +70,40 @@
   @media screen and (min-width: 64em) {
     width: calc(var(--width-sm) + 4rem);
   }
+  @media screen and (min-width: 90em) {
+    width: calc(var(--width-md) + 4rem);
+  }
 }
 
 .basket {
   position: relative;
 }
+.basket svg {
+  @media screen and (min-width: 45em) {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}
+
 .basket span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   left: 50%;
   top: -25%;
+  min-width: 2.4rem;
+  min-height: 2.4rem;
   transform: translate(-50%, -50%);
   background-color: var(--color-secondary);
   color: var(--color-secondary-content);
   padding: var(--space-xs);
   font-size: var(--scale-00);
   border-radius: var(--radius-full);
+
+  @media screen and (min-width: 45em) {
+    font-size: var(--scale-0);
+    min-width: 2.8rem;
+    min-height: 2.8rem;
+  }
 }
