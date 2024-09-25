@@ -10,13 +10,15 @@ function Header() {
   const { getSearchParamsValue, updateSearchParamsUrl } =
     useSearchParamNavigation();
   const { debounce } = useDebounce();
-  const [search, setSearch] = useState(getSearchParamsValue('search'));
+  const [searchValue, setSearchValue] = useState(
+    getSearchParamsValue('search'),
+  );
 
   const handlerSearchParamOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { value } = event.target;
 
-    setSearch(value);
+    setSearchValue(value);
     debounce(() => updateSearchParamsUrl('search', value));
   };
 
@@ -26,7 +28,7 @@ function Header() {
       <input
         type="text"
         className={styles.search}
-        value={search}
+        value={searchValue}
         placeholder="Search on product name..."
         onChange={handlerSearchParamOnChange}
       />
