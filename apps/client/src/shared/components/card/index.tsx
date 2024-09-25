@@ -37,15 +37,10 @@ function Middle({
 
 function Bottom({
   children,
-  className,
   ...rest
 }: HTMLAttributes<HTMLDivElement>): JSX.Element {
   return (
-    <div
-      id="card-bottom"
-      className={className ? className : 'bottom'}
-      {...rest}
-    >
+    <div id="card-bottom" {...rest}>
       {children}
     </div>
   );

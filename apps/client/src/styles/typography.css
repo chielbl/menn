@@ -1,10 +1,10 @@
 @import '@repo/ui/theme';
 
 p {
-  font-size: var(--scale-fluid-3);
+  font-size: var(--scale-fluid-2);
 
   @media screen and (min-width: 45em) {
-    font-size: var(--scale-fluid-4);
+    font-size: var(--scale-fluid-3);
   }
 }
 
@@ -35,5 +35,13 @@ h3 {
 
   @media screen and (min-width: 45em) {
     font-size: var(--scale-fluid-5);
+  }
+}
+
+h4 {
+  font-size: var(--scale-fluid-3);
+
+  @media screen and (min-width: 45em) {
+    font-size: var(--scale-fluid-4);
   }
 }

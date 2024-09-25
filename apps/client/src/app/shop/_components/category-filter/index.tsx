@@ -6,6 +6,7 @@ import { categories, type Category } from './types';
 import Link from 'next/link';
 import { useCallback } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { useSearchParamNavigation } from '@/shared/hooks';
 
 const CATEGORY_ICONS: Record<Category, React.ReactNode> = {
   cookie: <Cookie />,
@@ -18,35 +19,16 @@ interface CategoryFilterProps {
 }
 
 function CategoryFilter({ customClassName }: CategoryFilterProps): JSX.Element {
-  const pathname = usePathname();
+  const { getNavigationLink } = useSearchParamNavigation();
   const searchParams = useSearchParams();
   const activeCategory = searchParams.get('category');
-
-  // Get a new searchParams string by merging the current
-  // searchParams with a provided key/value pair
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams],
-  );
-
-  const getCategoryLink = (category: Category) => {
-    if (category === activeCategory) {
-      return pathname;
-    }
-    return `${pathname}?${createQueryString('category', category)}`;
-  };
 
   return (
     <ul className={customClassName || styles.categoryFilter}>
       {categories.map((category) => (
         <li key={category}>
           <Link
-            href={getCategoryLink(category)}
+            href={getNavigationLink('category', category)}
             className={category === activeCategory ? styles.active : ''}
           >
             {CATEGORY_ICONS[category]}

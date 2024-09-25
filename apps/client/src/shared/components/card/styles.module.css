@@ -5,5 +5,11 @@
   background-color: var(--color-base-200);
   border-radius: var(--radius-sm);
   overflow: hidden;
-  border: solid 0.2rem var(--color-secondary);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  height: 100%;
+
+  @media screen and (min-width: 64em) {
+    box-shadow: var(--shadow-lg);
+  }
 }

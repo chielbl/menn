@@ -3,7 +3,7 @@
 import { useProductsGetAll } from '@repo/contract/client/hooks';
 import styles from './styles.module.css';
 import { Review } from '@repo/contract/types';
-import { Card } from '@/shared/components';
+import { BuyAddRemoveButtons, Card, Reviews } from '@/shared/components';
 
 function ProductList() {
   const { data, isLoading } = useProductsGetAll();
@@ -30,14 +30,15 @@ function ProductList() {
               <span>€ {product.price}</span>
             </Card.Top>
             <Card.Middle className={styles.cardMiddle}>
-              <div className={styles.heading}>
-                <h3>{product.name}</h3>
+              <h4>{product.name}</h4>
+              <div className={styles.reviews}>
+                <Reviews score={calcReviewScore(product.reviews)} />
                 <span>{calcReviewScore(product.reviews)}</span>
               </div>
-              <p>{product.description}</p>
+              {/* <p>{product.description}</p> */}
             </Card.Middle>
             <Card.Bottom className={styles.cardBottom}>
-              <button>Add to basket</button>
+              <BuyAddRemoveButtons value={1} />
             </Card.Bottom>
           </Card>
         );

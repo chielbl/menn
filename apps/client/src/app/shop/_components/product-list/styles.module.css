@@ -1,27 +1,24 @@
 .productList {
   display: grid;
-  grid-template-columns: var(--grid-page-main);
+  grid-template-columns: minmax(28rem, 32rem);
   gap: var(--space-xl);
   text-align: center;
   justify-content: center;
   padding: var(--space-xl);
   max-width: var(--width-xl);
   margin: auto;
+  margin-top: var(--space-xl);
 
   @media screen and (min-width: 30em) {
     gap: calc(var(--space-xl) * 2) var(--space-xl);
-    grid-template-columns: var(--grid-2);
+    grid-template-columns: repeat(2, minmax(0, 32rem));
   }
   @media screen and (min-width: 64em) {
-    grid-template-columns: var(--grid-3);
+    grid-template-columns: repeat(3, minmax(0, 32rem));
   }
   @media screen and (min-width: 90em) {
     gap: calc(var(--space-xl) * 3) calc(var(--space-xl) * 1.5);
-    grid-template-columns: var(--grid-4);
-  }
-  @media screen and (min-width: 135em) {
-    gap: calc(var(--space-xl) * 4) calc(var(--space-xl) * 2);
-    grid-template-columns: var(--grid-5);
+    grid-template-columns: repeat(4, minmax(0, 32rem));
   }
 }
 
@@ -40,11 +37,11 @@
   right: 0.4rem;
   top: 0.4rem;
   z-index: 10;
-  background-color: var(--color-base-200);
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-content);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
-  border: solid 0.1rem var(--color-secondary);
 }
 
 .cardMiddle {
@@ -53,27 +50,27 @@
   gap: var(--space-sm);
   padding: var(--space-md);
 }
-.cardMiddle .heading {
+.cardMiddle h4 {
   text-transform: uppercase;
 }
-.cardMiddle .heading span {
-  font-size: var(--scale-0);
+.cardMiddle .reviews {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-px);
 }
-.cardMiddle p {
-  font-size: var(--scale-1);
-
-  @media screen and (min-width: 64em) {
-    font-size: var(--scale-2);
-  }
+.cardMiddle .reviews span {
+  font-size: var(--scale-0);
 }
 
 .cardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: var(--space-sm);
   background-color: var(--color-secondary);
   color: var(--color-secondary-content);
+  height: 4.8rem;
 }
 .cardBottom button {
-  padding: var(--space-md);
   color: var(--color-secondary-content);
-  text-transform: uppercase;
 }

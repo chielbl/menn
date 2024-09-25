@@ -1,0 +1,7 @@
+.reviews svg {
+  color: var(--color-secondary);
+}
+
+.reviews .filled {
+  fill: var(--color-primary);
+}
