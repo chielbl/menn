@@ -14,8 +14,8 @@ function Header() {
   const handlerSearchParamOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { value } = event.target;
-    setSearch(value);
 
+    setSearch(value);
     debounce(() => updateRouterUrl('search', value));
   };
 

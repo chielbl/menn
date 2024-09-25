@@ -29,6 +29,15 @@ export function useSearchParamNavigation() {
   };
 
   const getValue = (key: string) => searchParams.get(key) || '';
+  const getValues = () => {
+    const values: Record<string, string> = {};
 
-  return { getNavigationLink, getValue, updateRouterUrl };
+    searchParams.forEach((value, key) => {
+      values[key] = value;
+    });
+
+    return values;
+  };
+
+  return { getNavigationLink, getValue, getValues, updateRouterUrl };
 }
