@@ -7,16 +7,17 @@ import { ShoppingBasket } from 'lucide-react';
 import { ChangeEvent, useState } from 'react';
 
 function Header() {
-  const { getValue, updateRouterUrl } = useSearchParamNavigation();
+  const { getSearchParamsValue, updateSearchParamsUrl } =
+    useSearchParamNavigation();
   const { debounce } = useDebounce();
-  const [search, setSearch] = useState(getValue('search'));
+  const [search, setSearch] = useState(getSearchParamsValue('search'));
 
   const handlerSearchParamOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { value } = event.target;
 
     setSearch(value);
-    debounce(() => updateRouterUrl('search', value));
+    debounce(() => updateSearchParamsUrl('search', value));
   };
 
   return (

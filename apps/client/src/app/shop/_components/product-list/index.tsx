@@ -27,10 +27,11 @@ function filterProducts(
 
 function ProductList() {
   const { data, isLoading } = useProductsGetAll();
-  const { getValues } = useSearchParamNavigation();
-  const values = getValues();
+  const { getSearchParamsValues } = useSearchParamNavigation();
   const productList =
-    data?.data.filter((product) => filterProducts(product, values)) || [];
+    data?.data.filter((product) =>
+      filterProducts(product, getSearchParamsValues()),
+    ) || [];
 
   if (isLoading) return <div>Loading...</div>;
   if (!isLoading && !productList.length) return <div>No data</div>;

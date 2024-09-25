@@ -6,7 +6,7 @@ export function useSearchParamNavigation() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const createQueryString = useCallback(
+  const createSearchParamsQueryString = useCallback(
     (key: string, value: string) => {
       const currentParam = searchParams.get(key);
       const params = new URLSearchParams(searchParams.toString());
@@ -19,17 +19,17 @@ export function useSearchParamNavigation() {
     [searchParams],
   );
 
-  const getNavigationLink = (key: string, value: string) => {
-    return `${pathname}?${createQueryString(key, value)}`;
+  const getSearchParamsUrl = (key: string, value: string) => {
+    return `${pathname}?${createSearchParamsQueryString(key, value)}`;
   };
 
-  const updateRouterUrl = (key: string, value: string) => {
-    const newUrl = getNavigationLink(key, value);
+  const updateSearchParamsUrl = (key: string, value: string) => {
+    const newUrl = getSearchParamsUrl(key, value);
     router.push(newUrl);
   };
 
-  const getValue = (key: string) => searchParams.get(key) || '';
-  const getValues = () => {
+  const getSearchParamsValue = (key: string) => searchParams.get(key) || '';
+  const getSearchParamsValues = () => {
     const values: Record<string, string> = {};
 
     searchParams.forEach((value, key) => {
@@ -39,5 +39,10 @@ export function useSearchParamNavigation() {
     return values;
   };
 
-  return { getNavigationLink, getValue, getValues, updateRouterUrl };
+  return {
+    getSearchParamsUrl,
+    getSearchParamsValue,
+    getSearchParamsValues,
+    updateSearchParamsUrl,
+  };
 }

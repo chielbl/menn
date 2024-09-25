@@ -19,7 +19,7 @@ interface CategoryFilterProps {
 }
 
 function CategoryFilter({ customClassName }: CategoryFilterProps): JSX.Element {
-  const { getNavigationLink } = useSearchParamNavigation();
+  const { getSearchParamsUrl } = useSearchParamNavigation();
   const searchParams = useSearchParams();
   const activeCategory = searchParams.get('category');
 
@@ -28,7 +28,7 @@ function CategoryFilter({ customClassName }: CategoryFilterProps): JSX.Element {
       {categories.map((category) => (
         <li key={category}>
           <Link
-            href={getNavigationLink('category', category)}
+            href={getSearchParamsUrl('category', category)}
             className={category === activeCategory ? styles.active : ''}
           >
             {CATEGORY_ICONS[category]}
