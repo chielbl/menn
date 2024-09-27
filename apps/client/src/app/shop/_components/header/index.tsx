@@ -19,7 +19,7 @@ function Header() {
     const { value } = event.target;
 
     setSearchValue(value);
-    debounce(() => updateSearchParamsUrl('search', value));
+    debounce(() => updateSearchParamsUrl('search', value), 200);
   };
 
   return (

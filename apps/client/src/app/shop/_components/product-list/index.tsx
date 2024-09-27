@@ -5,33 +5,14 @@ import styles from './styles.module.css';
 import { Product, Review } from '@repo/contract/types';
 import { BuyAddRemoveButtons, Card, Reviews } from '@/shared/components';
 import { useSearchParamNavigation } from '@/shared/hooks';
-import { useEffect, useState } from 'react';
-
-function filterProducts(
-  product: Product,
-  values: Record<string, string>,
-): boolean {
-  for (var key in values) {
-    const pKey = (key === 'search' ? 'name' : key) as keyof Product;
-    const value = values[key];
-
-    if (
-      product[pKey] === undefined ||
-      !product[pKey].toString().toLowerCase().includes(value.toLowerCase())
-    ) {
-      return false;
-    }
-  }
-  return true;
-}
 
 function ProductList() {
   const { data, isLoading } = useProductsGetAll();
-  const { getSearchParamsValues } = useSearchParamNavigation();
-  const productList =
-    data?.data.filter((product) =>
-      filterProducts(product, getSearchParamsValues()),
-    ) || [];
+  const { filterOnSearchParamsQueryString } = useSearchParamNavigation();
+  const products = data?.data || [];
+  const productList = products.filter((product) =>
+    filterOnSearchParamsQueryString<Product>(product),
+  );
 
   if (isLoading) return <div>Loading...</div>;
   if (!isLoading && !productList.length) return <div>No data</div>;
