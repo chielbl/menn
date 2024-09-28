@@ -17,7 +17,7 @@ function Header() {
   const [searchValue, setSearchValue] = useState(
     getSearchParamsValue('search'),
   );
-  const { actions } = useBasket();
+  const { getTotalItems } = useBasket();
 
   const handlerSearchParamOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -39,7 +39,7 @@ function Header() {
       />
       <div className={styles.basket}>
         <ShoppingBasket />
-        <span>{actions.getTotalItems()}</span>
+        <span>{getTotalItems()}</span>
       </div>
     </header>
   );

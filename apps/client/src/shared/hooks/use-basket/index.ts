@@ -41,7 +41,7 @@ const basketStore = create<State & Action>((set) => ({
 }));
 
 export function useBasket() {
-  const { items, ...actions } = basketStore((store) => store);
+  const { items, ...rest } = basketStore((store) => store);
 
   const getProductQuantity = (product: Product) => {
     const item = items.find((item) => item.product.id === product.id);
@@ -59,14 +59,10 @@ export function useBasket() {
   };
 
   return {
-    state: {
-      items,
-    },
-    actions: {
-      getProductQuantity,
-      getTotalItems,
-      getTotalPrice,
-      ...actions,
-    },
+    items,
+    ...rest,
+    getProductQuantity,
+    getTotalItems,
+    getTotalPrice,
   };
 }

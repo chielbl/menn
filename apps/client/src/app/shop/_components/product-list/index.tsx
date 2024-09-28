@@ -9,7 +9,7 @@ import { useBasket, useSearchParamNavigation } from '@/shared/hooks';
 function ProductList() {
   const { data, isLoading } = useProductsGetAll();
   const { filterOnSearchParamsQueryString } = useSearchParamNavigation();
-  const { actions } = useBasket();
+  const { getProductQuantity, updateBasket } = useBasket();
   const products = data?.data || [];
   const productList = products.filter((product) =>
     filterOnSearchParamsQueryString<Product>(product),
@@ -31,7 +31,7 @@ function ProductList() {
     <div className={styles.productList}>
       {productList.map((product) => {
         const { id, thumbnail, name, description, price, reviews } = product;
-        const quantity = actions.getProductQuantity(product);
+        const quantity = getProductQuantity(product);
 
         return (
           <Card key={id}>
@@ -50,8 +50,8 @@ function ProductList() {
             <Card.Bottom className={styles.cardBottom}>
               <BuyAddRemoveButtons
                 value={quantity}
-                onAdd={() => actions.updateBasket(product, quantity + 1)}
-                onRemove={() => actions.updateBasket(product, quantity - 1)}
+                onAdd={() => updateBasket(product, quantity + 1)}
+                onRemove={() => updateBasket(product, quantity - 1)}
               />
             </Card.Bottom>
           </Card>
