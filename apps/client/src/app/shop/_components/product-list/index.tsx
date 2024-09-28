@@ -4,11 +4,12 @@ import { useProductsGetAll } from '@repo/contract/client/hooks';
 import styles from './styles.module.css';
 import { Product, Review } from '@repo/contract/types';
 import { BuyAddRemoveButtons, Card, Reviews } from '@/shared/components';
-import { useSearchParamNavigation } from '@/shared/hooks';
+import { useBasket, useSearchParamNavigation } from '@/shared/hooks';
 
 function ProductList() {
   const { data, isLoading } = useProductsGetAll();
   const { filterOnSearchParamsQueryString } = useSearchParamNavigation();
+  const { actions } = useBasket();
   const products = data?.data || [];
   const productList = products.filter((product) =>
     filterOnSearchParamsQueryString<Product>(product),
@@ -29,6 +30,7 @@ function ProductList() {
   return (
     <div className={styles.productList}>
       {productList.map((product) => {
+        const quantity = actions.getProductQuantity(product);
         return (
           <Card key={product.id}>
             <Card.Top className={styles.cardTop}>
@@ -41,10 +43,14 @@ function ProductList() {
                 <Reviews score={calcReviewScore(product.reviews)} />
                 <span>{calcReviewScore(product.reviews)}</span>
               </div>
-              {/* <p>{product.description}</p> */}
+              <p>{product.description}</p>
             </Card.Middle>
             <Card.Bottom className={styles.cardBottom}>
-              <BuyAddRemoveButtons value={1} />
+              <BuyAddRemoveButtons
+                value={quantity}
+                onAdd={() => actions.updateBasket(product, quantity + 1)}
+                onRemove={() => actions.updateBasket(product, quantity - 1)}
+              />
             </Card.Bottom>
           </Card>
         );

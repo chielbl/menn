@@ -2,7 +2,11 @@
 
 import styles from './styles.module.css';
 import Logo from '@/shared/components/logo';
-import { useDebounce, useSearchParamNavigation } from '@/shared/hooks';
+import {
+  useBasket,
+  useDebounce,
+  useSearchParamNavigation,
+} from '@/shared/hooks';
 import { ShoppingBasket } from 'lucide-react';
 import { ChangeEvent, useState } from 'react';
 
@@ -13,6 +17,7 @@ function Header() {
   const [searchValue, setSearchValue] = useState(
     getSearchParamsValue('search'),
   );
+  const { actions } = useBasket();
 
   const handlerSearchParamOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -34,7 +39,7 @@ function Header() {
       />
       <div className={styles.basket}>
         <ShoppingBasket />
-        <span>99</span>
+        <span>{actions.getTotalItems()}</span>
       </div>
     </header>
   );

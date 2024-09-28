@@ -4,24 +4,24 @@ import { Minus, Plus, Trash2 } from 'lucide-react';
 interface BuyAddRemoveButtonsProps {
   primaryText?: string;
   value: number;
-  onAddToBasket?: () => void;
-  onRemoveFromBasket?: () => void;
+  onAdd: () => void;
+  onRemove: () => void;
 }
 function BuyAddRemoveButtons({
   primaryText = 'Add to basket'.toUpperCase(),
   value = 0,
-  onAddToBasket,
-  onRemoveFromBasket,
+  onAdd,
+  onRemove,
 }: BuyAddRemoveButtonsProps): JSX.Element {
-  if (value === 0) return <button>{primaryText}</button>;
+  if (value === 0) return <button onClick={onAdd}>{primaryText}</button>;
 
   return (
     <div className={styles.buttons}>
-      <button onClick={onRemoveFromBasket}>
+      <button onClick={onRemove}>
         {value === 1 ? <Trash2 size={16} /> : <Minus size={16} />}
       </button>
       <span>{value}</span>
-      <button onClick={onAddToBasket}>
+      <button onClick={onAdd}>
         <Plus size={16} />
       </button>
     </div>
