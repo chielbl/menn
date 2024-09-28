@@ -30,20 +30,22 @@ function ProductList() {
   return (
     <div className={styles.productList}>
       {productList.map((product) => {
+        const { id, thumbnail, name, description, price, reviews } = product;
         const quantity = actions.getProductQuantity(product);
+
         return (
-          <Card key={product.id}>
+          <Card key={id}>
             <Card.Top className={styles.cardTop}>
-              <img src={`/${product.thumbnail}`} alt="product image" />
-              <span>€ {product.price}</span>
+              <img src={`/${thumbnail}`} alt="product image" />
+              <span>€ {price}</span>
             </Card.Top>
             <Card.Middle className={styles.cardMiddle}>
-              <h4>{product.name}</h4>
+              <h4>{name}</h4>
               <div className={styles.reviews}>
-                <Reviews score={calcReviewScore(product.reviews)} />
-                <span>{calcReviewScore(product.reviews)}</span>
+                <Reviews score={calcReviewScore(reviews)} />
+                <span>{calcReviewScore(reviews)}</span>
               </div>
-              <p>{product.description}</p>
+              <p>{description}</p>
             </Card.Middle>
             <Card.Bottom className={styles.cardBottom}>
               <BuyAddRemoveButtons
