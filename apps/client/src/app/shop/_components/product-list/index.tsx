@@ -3,7 +3,12 @@
 import { useProductsGetAll } from '@repo/contract/client/hooks';
 import styles from './styles.module.css';
 import { Product, Review } from '@repo/contract/types';
-import { BuyAddRemoveButtons, Card, Reviews } from '@/shared/components';
+import {
+  BuyAddRemoveButtons,
+  Card,
+  Loader,
+  Reviews,
+} from '@/shared/components';
 import { useBasket, useSearchParamNavigation } from '@/shared/hooks';
 
 function ProductList() {
@@ -15,7 +20,6 @@ function ProductList() {
     filterOnSearchParamsQueryString<Product>(product),
   );
 
-  if (isLoading) return <div>Loading...</div>;
   if (!isLoading && !productList.length) return <div>No data</div>;
 
   const calcReviewScore = (reviews: Review[]): number => {
