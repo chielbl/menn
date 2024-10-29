@@ -48,7 +48,7 @@
   --color-warning-default: var(--warning-500);
   --color-warning-light: var(--warning-300);
   --color-warning-lighter: var(--warning-100); */
-  
+
   --radius-px: 0.1rem;
   --radius-xs: 0.2rem;
   --radius-sm: 0.3rem;
@@ -103,9 +103,7 @@
   --button-primary-light-disable: var(--cookie-200);
   --button-primary-light-hover: var(--cookie-400);
   --button-primary-light-outline: var(--button-primary-light-background);
-  --button-primary-light-outline-text: var(
-    --button-primary-light-background
-  );
+  --button-primary-light-outline-text: var(--button-primary-light-background);
 
   --input-primary-active: var(--button-primary-hover);
   --input-primary-background: var(--color-primary-default);
@@ -258,13 +256,6 @@ footer {
   line-height: 1.6;
   box-sizing: border-box;
   background-color: var(--color-base-light);
-}
-
-footer {
-  background-color: var(--color-base-dark);
-  padding: var(--space-sm);
-  text-align: center;
-  font-size: var(--text-xs);
 }
 
 button {

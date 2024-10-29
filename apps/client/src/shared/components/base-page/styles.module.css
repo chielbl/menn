@@ -1,0 +1,40 @@
+.header > div {
+  display: flex;
+  align-items: center;
+  padding-bottom: var(--space-sm);
+  background-color: var(--color-base-default);
+
+  @media screen and (min-width: 64em) {
+    padding: var(--space-md);
+  }
+  @media screen and (min-width: 135em) {
+    padding: var(--space-default);
+  }
+}
+
+.logo {
+  margin-left: var(--space-md);
+  margin-top: var(--space-xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo img {
+  width: 6.4rem;
+  height: 6.4rem;
+  object-fit: contain;
+
+  @media screen and (min-width: 45em) {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+.logo h3 {
+  color: var(--color-primary-darker);
+  font-size: 90%;
+}
+
+.pageName {
+  flex: 1;
+  text-align: center;
+}

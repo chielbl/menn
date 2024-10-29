@@ -3,13 +3,16 @@
 import styles from './styles.module.css';
 import { useBasket } from '@/shared/hooks';
 import { Minus, Plus, ShoppingBasket, Trash2 } from 'lucide-react';
+import Link from 'next/link';
 
 function Basket() {
   const { items, getTotalItems, getTotalPrice, updateBasket } = useBasket();
 
   return (
     <div className={styles.basket}>
-      <ShoppingBasket />
+      <Link href="/checkout">
+        <ShoppingBasket />
+      </Link>
       <span>{getTotalItems()}</span>
       <div className={styles.basketPreview}>
         <div className={styles.items}>

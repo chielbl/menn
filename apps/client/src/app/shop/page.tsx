@@ -1,10 +1,9 @@
 import styles from './shop.module.css';
-import { Header, ProductList } from './_components';
+import { ProductList } from './_components';
 
 function ShopPage() {
   return (
-    <section id="shop_page" className={styles.shopPage}>
-      <Header />
+    <section id="shop-page" className={styles.shopPage}>
       <ProductList />
     </section>
   );
