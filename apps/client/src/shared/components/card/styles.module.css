@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--color-base-200);
+  background-color: var( --color-base-dark);
   border-radius: var(--radius-sm);
   overflow: hidden;
   box-shadow: var(--shadow-md);

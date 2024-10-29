@@ -4,14 +4,13 @@ import styles from './styles.module.css';
 import { Cookie, Gift, CupSoda } from 'lucide-react';
 import { categories, type Category } from './types';
 import Link from 'next/link';
-import { useCallback } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useSearchParamNavigation } from '@/shared/hooks';
 
 const CATEGORY_ICONS: Record<Category, React.ReactNode> = {
   cookie: <Cookie />,
-  drank: <CupSoda />,
-  gifts: <Gift />,
+  drink: <CupSoda />,
+  gift: <Gift />,
 };
 
 interface CategoryFilterProps {

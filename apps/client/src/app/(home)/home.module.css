@@ -8,7 +8,7 @@
   margin-top: var(--space-xs);
   display: flex;
   align-items: center;
-  gap: var(--space-df);
+  gap: var(--space-default);
 }
 .logo img {
   width: 8rem;
@@ -21,14 +21,14 @@
   }
 }
 .logo h3 {
-  color: var(--color-primary);
+  color: var(--color-primary-light);
 } */
 
 .slogan {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
-  width: 90%;
+  gap: var(--space-xl);
+  width: 95%;
   max-width: var(--width-max);
   position: absolute;
   top: 50%;
@@ -36,21 +36,22 @@
   transform: translate(-50%, -50%);
 }
 .sloganContent {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-light);
   text-align: center;
-  color: var(--color-secondary-content);
-  border-radius: var(--radius-xl);
-  padding: var(--space-sm) var(--space-lg);
+  color: var(--color-primary-lighter);
+  border-radius: var(--radius-default);
+  padding: var(--space-md);
 
   @media screen and (min-width: 45em) {
-    padding: var(--space-md) var(--space-xl);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
   }
 }
 .sloganContent h1 span {
   color: var(--color-accent);
 }
 .sloganContent h1:last-child {
-  color: var(--color-secondary);
+  color: var(--color-primary-dark);
 }
 .slogan a {
   display: flex;
@@ -58,7 +59,7 @@
   align-items: center;
   justify-content: center;
   margin: auto;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
 }
 
 .bgVideo {

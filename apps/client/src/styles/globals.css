@@ -4,37 +4,222 @@
 
 :root {
   /* Breakpoints */
-  /* 
+  /*
   phone: '30em', // Phablet => @media (min-width: 480px) { ... }
   tab: '45em', // Tablet Landscape => @media (min-width: 720px) { ... }
   desk: '64em', // Desktop => @media (min-width: 1024px) { ... }
   '2k': '90em', // Ultra 2k => @media (min-width: 1440px) { ... }
-  '4k': '135em', // Ultra 4k => @media (min-width: 2160px) { ... } 
+  '4k': '135em', // Ultra 4k => @media (min-width: 2160px) { ... }
   */
 
   /* Font */
   --font-fam-accent: 'Pacifico', 'Roboto', 'Open sans', 'Lato', sans-serif;
 
+  /* Theme */
+  --color-accent: rgb(0 166 25);
+  --color-black: rgb(0 0 0);
+  --color-text: var(--cookie-950);
+  --color-white: rgb(255 255 255);
+  --color-base-dark: var(--cookie-200);
+  --color-base-default: var(--cookie-100);
+  --color-base-light: var(--cookie-50);
+  --color-primary-dark: var(--cookie-700);
+  --color-primary-darker: var(--cookie-900);
+  --color-primary-default: var(--cookie-500);
+  --color-primary-light: var(--cookie-300);
+  --color-primary-lighter: var(--cookie-100);
+  /* --color-danger-dark: var(--danger-700);
+  --color-danger-darker: var(--danger-900);
+  --color-danger-default: var(--danger-500);
+  --color-danger-light: var(--danger-300);
+  --color-danger-lighter: var(--danger-100);
+  --color-info-dark: var(--info-700);
+  --color-info-darker: var(--info-900);
+  --color-info-default: var(--info-500);
+  --color-info-light: var(--info-300);
+  --color-info-lighter: var(--info-100);
+  --color-succes-dark: var(--succes-700);
+  --color-succes-darker: var(--succes-900);
+  --color-succes-default: var(--succes-500);
+  --color-succes-light: var(--succes-300);
+  --color-succes-lighter: var(--succes-100);
+  --color-warning-dark: var(--warning-700);
+  --color-warning-darker: var(--warning-900);
+  --color-warning-default: var(--warning-500);
+  --color-warning-light: var(--warning-300);
+  --color-warning-lighter: var(--warning-100); */
+  
+  --radius-px: 0.1rem;
+  --radius-xs: 0.2rem;
+  --radius-sm: 0.3rem;
+  --radius-md: 0.8rem;
+  --radius-default: 1.6rem;
+  --radius-lg: 3.2rem;
+  --radius-xl: 6.4rem;
+  --radius-full: 999.9rem;
+  --space-px: 0.1rem;
+  --space-xs: 0.3rem;
+  --space-sm: 0.8rem;
+  --space-md: 1.2rem;
+  --space-default: 1.6rem;
+  --space-lg: 2.4rem;
+  --space-xl: 3.2rem;
+  --text-xs: 1rem;
+  --text-sm: 1.2rem;
+  --text-md: 1.4rem;
+  --text-default: 1.6rem;
+  --text-lg: 1.8rem;
+  --text-xl: 2rem;
+  --heading-xs: 2.4rem;
+  --heading-sm: 2.8rem;
+  --heading-md: 3.2rem;
+  --heading-lg: 4rem;
+  --heading-xl: 5.6rem;
+  /* --width-xs: 42rem;
+  --width-sm: 72rem;
+  --width-md: 102.4rem;
+  --width-lg: 128rem;
+  --width-xl: 144rem;
+  --width-2k: 216rem; */
+
+  /* Color components */
+  --button-primary-active: var(--button-primary-hover);
+  --button-primary-background: var(--color-primary-default);
+  --button-primary-text: var(--color-primary-lighter);
+  --button-primary-disabled: var(--cookie-400);
+  --button-primary-hover: var(--cookie-600);
+  --button-primary-outline: var(--button-primary-background);
+  --button-primary-outline-text: var(--button-primary-background);
+  --button-primary-dark-active: var(--button-primary-dark-hover);
+  --button-primary-dark-background: var(--color-primary-dark);
+  --button-primary-dark-text: var(--color-primary-lighter);
+  --button-primary-dark-disable: var(--cookie-600);
+  --button-primary-dark-hover: var(--cookie-800);
+  --button-primary-dark-outline: var(--button-primary-dark-background);
+  --button-primary-dark-outline-text: var(--button-primary-dark-background);
+  --button-primary-light-active: var(--button-primary-light-hover);
+  --button-primary-light-background: var(--color-primary-light);
+  --button-primary-light-text: var(--color-primary-darker);
+  --button-primary-light-disable: var(--cookie-200);
+  --button-primary-light-hover: var(--cookie-400);
+  --button-primary-light-outline: var(--button-primary-light-background);
+  --button-primary-light-outline-text: var(
+    --button-primary-light-background
+  );
+
+  --input-primary-active: var(--button-primary-hover);
+  --input-primary-background: var(--color-primary-default);
+  --input-primary-text: var(--button-primary-background);
+  --input-primary-disabled: var(--cookie-400);
+  --input-primary-hover: var(--cookie-600);
+  --input-primary-outline: var(--button-primary-background);
+  --input-primary-outline-text: var(--button-primary-background);
+  --input-primary-value: var(--color-primary-lighter);
+  --input-primary-dark-active: var(--button-primary-dark-hover);
+  --input-primary-dark-background: var(--color-primary-dark);
+  --input-primary-dark-text: var(--button-primary-dark-background);
+  --input-primary-dark-disable: var(--cookie-600);
+  --input-primary-dark-hover: var(--cookie-800);
+  --input-primary-dark-outline: var(--button-primary-dark-background);
+  --input-primary-dark-outline-text: var(--button-primary-dark-background);
+  --input-primary-dark-value: var(--color-primary-light);
+  --input-primary-light-active: var(--button-primary-light-hover);
+  --input-primary-light-background: var(--color-primary-light);
+  --input-primary-light-text: var(--input-primary-light-background);
+  --input-primary-light-disable: var(--cookie-200);
+  --input-primary-light-hover: var(--cookie-400);
+  --input-primary-light-outline: var(--button-primary-light-background);
+  --input-primary-light-outline-text: var(--button-primary-light-background);
+  --input-primary-light-value: var(--color-primary-dark);
+
+  /* Color pallet */
+  --accent-100: rgb(214 255 220);
+  --accent-200: rgb(175 255 186);
+  --accent-300: rgb(113 255 134);
+  --accent-400: rgb(45 251 74);
+  --accent-50: rgb(237 255 239);
+  --accent-500: rgb(2 229 35);
+  --accent-600: rgb(0 191 24);
+  --accent-700: rgb(0 166 25);
+  --accent-800: rgb(6 117 23);
+  --accent-900: rgb(8 95 23);
+  --accent-950: rgb(0 54 9);
+  --cookie-100: rgb(250 240 218);
+  --cookie-200: rgb(243 221 181);
+  --cookie-300: rgb(234 192 122);
+  --cookie-400: rgb(227 164 84);
+  --cookie-50: rgb(253 249 239);
+  --cookie-500: rgb(220 139 51);
+  --cookie-600: rgb(206 116 40);
+  --cookie-700: rgb(171 91 35);
+  --cookie-800: rgb(137 73 35);
+  --cookie-900: rgb(111 61 31);
+  --cookie-950: rgb(59 29 15);
+  --danger-100: rgb(254 226 226);
+  --danger-200: rgb(254 202 202);
+  --danger-300: rgb(252 165 165);
+  --danger-400: rgb(248 113 113);
+  --danger-50: rgb(254 242 242);
+  --danger-500: rgb(239 68 68);
+  --danger-600: rgb(220 38 38);
+  --danger-700: rgb(185 28 28);
+  --danger-800: rgb(153 27 27);
+  --danger-900: rgb(127 29 29);
+  --danger-950: rgb(69 10 10);
+  --info-100: rgb(219 233 254);
+  --info-200: rgb(191 218 254);
+  --info-300: rgb(147 195 253);
+  --info-400: rgb(96 162 250);
+  --info-50: rgb(239 246 255);
+  --info-500: rgb(59 126 246);
+  --info-600: rgb(37 95 235);
+  --info-700: rgb(29 74 216);
+  --info-800: rgb(30 61 175);
+  --info-900: rgb(30 56 138);
+  --info-950: rgb(23 36 84);
+  --succes-100: rgb(220 252 230);
+  --succes-200: rgb(187 247 207);
+  --succes-300: rgb(134 239 170);
+  --succes-400: rgb(74 222 125);
+  --succes-50: rgb(240 253 244);
+  --succes-500: rgb(34 197 91);
+  --succes-600: rgb(22 163 71);
+  --succes-700: rgb(21 128 59);
+  --succes-800: rgb(22 101 50);
+  --succes-900: rgb(20 83 44);
+  --succes-950: rgb(5 46 21);
+  --warning-100: rgb(252 254 195);
+  --warning-200: rgb(254 254 138);
+  --warning-300: rgb(253 245 71);
+  --warning-400: rgb(250 231 21);
+  --warning-50: rgb(253 254 232);
+  --warning-500: rgb(234 206 8);
+  --warning-600: rgb(202 161 4);
+  --warning-700: rgb(161 116 7);
+  --warning-800: rgb(133 91 14);
+  --warning-900: rgb(113 74 18);
+  --warning-950: rgb(66 39 6);
+
   /* Color */
-  --color-base: #fdf9ef;
+  /* --color-base: #fdf9ef;
   --color-base-100: #faf0da;
-  --color-base-200: #f3ddb5;
+   --color-base-dark: #f3ddb5;
   --color-base-content: #3b1d0f;
   --color-primary: #eac07a;
   --color-primary-content: #3b1d0f;
   --color-secondary: #6f3d1f;
   --color-secondary-content: #fdf9ef;
   --color-accent: #00a619;
-  --color-accent-content: #003609;
+  --color-accent-content: #003609; */
 
   /* Spacing */
-  --space-px: 0.1rem;
-  --space-xs: 0.4rem;
+  /* --space-px: 0.1rem;
+  --space-xs: 0.3rem;
   --space-sm: 0.8rem;
   --space-md: 1.2rem;
-  --space-df: 1.6rem;
+  --space-default: 1.6rem;
   --space-lg: 2.4rem;
-  --space-xl: 3.2rem;
+  --space-xl: 3.2rem; */
 }
 
 * {
@@ -52,7 +237,8 @@ html {
   font-size: 62.5%;
 }
 
-body {
+body,
+footer {
   padding: 0;
   margin: 0;
   font-family:
@@ -67,11 +253,18 @@ body {
     Droid Sans,
     Helvetica Neue,
     sans-serif;
-  color: var(--color-base-content);
+  color: var(--color-text);
   font-size: 1.6rem;
   line-height: 1.6;
   box-sizing: border-box;
-  background-color: var(--color-base);
+  background-color: var(--color-base-light);
+}
+
+footer {
+  background-color: var(--color-base-dark);
+  padding: var(--space-sm);
+  text-align: center;
+  font-size: var(--text-xs);
 }
 
 button {

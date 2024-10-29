@@ -2,13 +2,10 @@
 
 import styles from './styles.module.css';
 import Logo from '@/shared/components/logo';
-import {
-  useBasket,
-  useDebounce,
-  useSearchParamNavigation,
-} from '@/shared/hooks';
-import { ShoppingBasket } from 'lucide-react';
+import { useDebounce, useSearchParamNavigation } from '@/shared/hooks';
 import { ChangeEvent, useState } from 'react';
+import { Basket, CategoryFilter } from '..';
+import { UniqueSellingPoints } from '@/shared/components';
 
 function Header() {
   const { getSearchParamsValue, updateSearchParamsUrl } =
@@ -17,7 +14,6 @@ function Header() {
   const [searchValue, setSearchValue] = useState(
     getSearchParamsValue('search'),
   );
-  const { getTotalItems } = useBasket();
 
   const handlerSearchParamOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -29,18 +25,19 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <Logo customClassName={styles.logo} />
-      <input
-        type="text"
-        className={styles.search}
-        value={searchValue}
-        placeholder="Search on product name..."
-        onChange={handlerSearchParamOnChange}
-      />
-      <div className={styles.basket}>
-        <ShoppingBasket />
-        <span>{getTotalItems()}</span>
+      <UniqueSellingPoints />
+      <div>
+        <Logo customClassName={styles.logo} />
+        <input
+          type="text"
+          className={styles.search}
+          value={searchValue}
+          placeholder="Search on product name..."
+          onChange={handlerSearchParamOnChange}
+        />
+        <Basket />
       </div>
+      <CategoryFilter />
     </header>
   );
 }

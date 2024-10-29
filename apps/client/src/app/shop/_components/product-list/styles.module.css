@@ -34,11 +34,11 @@
 }
 .cardTop span {
   position: absolute;
-  right: 0.4rem;
-  top: 0.4rem;
+  right: 0.3rem;
+  top: 0.3rem;
   z-index: 10;
-  background-color: var(--color-secondary);
-  color: var(--color-secondary-content);
+  background-color: var(--color-primary-darker);
+  color: var(--color-primary-lighter);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
@@ -59,18 +59,18 @@
   gap: var(--space-px);
 }
 .cardMiddle .reviews span {
-  font-size: var(--scale-0);
+  font-size: var(--text-xs);
 }
 
 .cardBottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: var(--space-sm);
-  background-color: var(--color-secondary);
-  color: var(--color-secondary-content);
-  height: 4.8rem;
+     background-color: var(--button-primary-dark-background);
+     color: var(--button-primary-dark-text);
+     height: 4.8rem;
 }
 .cardBottom button {
-  color: var(--color-secondary-content);
+  color: var(--button-primary-dark-text);
+}
+.cardBottom button:hover {
+   background-color: var(--button-primary-dark-hover);
+   transition: background-color 0.3s;
 }

@@ -1,47 +1,21 @@
 @import '@repo/ui/theme';
 
 p {
-  font-size: var(--scale-fluid-2);
-
-  @media screen and (min-width: 45em) {
-    font-size: var(--scale-fluid-3);
-  }
+  font-size: clamp(var(--text-sm), 1vw, var(--text-default));
 }
 
 h1 {
-  font-size: var(--scale-fluid-6);
-
-  @media screen and (min-width: 45em) {
-    font-size: var(--scale-fluid-8);
-  }
-  @media screen and (min-width: 90em) {
-    font-size: var(--scale-fluid-10);
-  }
+  font-size: clamp(var(--heading-sm), 5vw, var(--heading-xl));
 }
 
 h2 {
-  font-size: var(--scale-fluid-5);
-
-  @media screen and (min-width: 45em) {
-    font-size: var(--scale-fluid-6);
-  }
-  @media screen and (min-width: 90em) {
-    font-size: var(--scale-fluid-8);
-  }
+  font-size: clamp(var(--heading-sm) - 25%, 3vw, var(--heading-sm));
 }
 
 h3 {
-  font-size: var(--scale-fluid-4);
-
-  @media screen and (min-width: 45em) {
-    font-size: var(--scale-fluid-5);
-  }
+  font-size: clamp(var(--heading-xs), 2vw, var(--heading-xs) + 25%);
 }
 
 h4 {
-  font-size: var(--scale-fluid-3);
-
-  @media screen and (min-width: 45em) {
-    font-size: var(--scale-fluid-4);
-  }
+  font-size: clamp(var(--heading-xs) - 25%, 1.5vw, var(--heading-xs));
 }

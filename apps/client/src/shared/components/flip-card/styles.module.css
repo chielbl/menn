@@ -30,12 +30,12 @@
 .flipCardFront {
   background-color: #bbb;
   /* color: black; */
-  /* background-color: var(--color-base-200); */
+  /* background-color: var( --color-base-dark); */
 }
 
 .flipCardBack {
   background-color: #2980b9;
   /* color: white; */
   transform: rotateY(180deg);
-  /* background-color: var(--color-base-200); */
+  /* background-color: var( --color-base-dark); */
 }

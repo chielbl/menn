@@ -3,7 +3,7 @@
   margin-top: var(--space-xs);
   display: flex;
   align-items: center;
-  gap: var(--space-df);
+  gap: var(--space-default);
 }
 .logo img {
   width: 8rem;
@@ -16,5 +16,5 @@
   }
 }
 .logo h3 {
-  color: var(--color-primary);
+  color: var(--color-primary-light);
 }

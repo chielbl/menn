@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   padding: var(--space-sm);
-  background-color: var(--color-base-200);
+  background-color: var( --color-base-dark);
   gap: var(--space-sm);
 
   @media screen and (min-width: 45em) {
@@ -28,15 +28,13 @@
   }
 }
 .uniqueSellingPoints p {
-  font-size: var(--scale-0);
+  font-size: var(--text-xs);
 
   @media screen and (min-width: 45em) {
-    font-size: var(--scale-1);
+    font-size: var(--text-sm);
   }
 }
 
 .uniqueSellingPoints svg {
   color: var(--color-accent);
-  height: var(--icon-md);
-  width: var(--icon-md);
 }

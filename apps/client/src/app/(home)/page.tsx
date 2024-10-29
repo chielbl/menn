@@ -1,5 +1,5 @@
-import { Logo } from '@/shared/components';
 import styles from './home.module.css';
+import { Logo } from '@/shared/components';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 

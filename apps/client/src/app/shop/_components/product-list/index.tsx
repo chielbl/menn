@@ -1,16 +1,11 @@
 'use client';
 
-import { useProductsGetAll } from '@repo/contract/client/hooks';
 import styles from './styles.module.css';
-import { Product, Review } from '@repo/contract/types';
-import {
-  BuyAddRemoveButtons,
-  Card,
-  Loader,
-  Reviews,
-} from '@/shared/components';
+import { BuyAddRemoveButtons, Card, Reviews } from '@/shared/components';
 import { useBasket, useSearchParamNavigation } from '@/shared/hooks';
-
+import { useProductsGetAll } from '@repo/contract/client/hooks';
+import { Product, Review } from '@repo/contract/types';
+ 
 function ProductList() {
   const { data, isLoading } = useProductsGetAll();
   const { filterOnSearchParamsQueryString } = useSearchParamNavigation();
@@ -40,7 +35,7 @@ function ProductList() {
         return (
           <Card key={id}>
             <Card.Top className={styles.cardTop}>
-              <img src={`/${thumbnail}`} alt="product image" />
+              {/* <img src={`/${thumbnail}`} alt="product image" /> */}
               <span>€ {price}</span>
             </Card.Top>
             <Card.Middle className={styles.cardMiddle}>

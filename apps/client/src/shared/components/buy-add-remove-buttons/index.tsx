@@ -13,7 +13,12 @@ function BuyAddRemoveButtons({
   onAdd,
   onRemove,
 }: BuyAddRemoveButtonsProps): JSX.Element {
-  if (value === 0) return <button onClick={onAdd}>{primaryText}</button>;
+  if (value === 0)
+    return (
+      <div className={styles.buttons}>
+        <button onClick={onAdd}>{primaryText}</button>
+      </div>
+    );
 
   return (
     <div className={styles.buttons}>
