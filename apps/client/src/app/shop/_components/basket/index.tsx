@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import styles from './styles.module.css';
 import { useBasket } from '@/shared/hooks';
@@ -6,31 +6,23 @@ import { Minus, Plus, ShoppingBasket, Trash2 } from 'lucide-react';
 
 function Basket() {
   const { items, getTotalItems, getTotalPrice, updateBasket } = useBasket();
-  
+
   return (
     <div className={styles.basket}>
       <ShoppingBasket />
       <span>{getTotalItems()}</span>
       <div className={styles.basketPreview}>
-        <div className={styles.basketItems}>
+        <div className={styles.items}>
           {items.map((item) => {
             const { product, quantity } = item;
             const { id, name, price } = product;
             return (
-              <ul key={id}>
-                <li>
-                  <p>{name}</p>
-                </li>
-                <li>
-                  <p>€{price}</p>
-                </li>
-                <li>
-                  <p>{quantity}x</p>
-                </li>
-                <li>
-                  <p>€{(price * quantity).toFixed(2)}</p>
-                </li>
-                <li>
+              <div key={id} className={styles.item}>
+                <p>{name}</p>
+                <p>€{price}</p>
+                <p>{quantity}x</p>
+                <p>€{(price * quantity).toFixed(2)}</p>
+                <div className={styles.itemButtons}>
                   <button onClick={() => updateBasket(product, quantity + 1)}>
                     <Plus size={12} />
                   </button>
@@ -41,8 +33,8 @@ function Basket() {
                       <Minus size={12} />
                     )}
                   </button>
-                </li>
-              </ul>
+                </div>
+              </div>
             );
           })}
         </div>

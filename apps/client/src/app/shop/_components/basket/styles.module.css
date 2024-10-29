@@ -59,32 +59,35 @@
   box-shadow: var(--shadow-xl);
   padding: var(--space-xs) var(--space-sm);
 }
-.basketItems {
+
+.items {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
   overflow-y: auto;
 }
-.basketItems > ul {
+
+.item {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
 }
-.basketItems > ul > li:first-of-type {
+.item > p:first-of-type {
   flex: 1;
 }
-.basketItems > ul > li:last-of-type {
+
+.itemButtons {
      display: flex;
      flex-direction: column;
      background-color: var(--button-primary-dark-background);
      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
-.basketItems > ul > li:last-of-type button {
+.itemButtons button {
      color: var(--button-primary-dark-text);
      padding: var(--space-xs) var(--space-sm);
 }
-.basketItems > ul > li:last-of-type button:hover {
+.itemButtons button:hover {
      background-color: var(--button-primary-dark-hover);
 }
 
