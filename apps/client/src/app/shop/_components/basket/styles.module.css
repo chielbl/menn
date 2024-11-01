@@ -54,7 +54,7 @@
   flex-direction: column;
   background-color: var(--color-base-default);
   height: 50vh;
-  width: 50vw;
+  width: 90vw;
   max-width: var(--width-xs);
   box-shadow: var(--shadow-xl);
   padding: var(--space-xs) var(--space-sm);
@@ -78,21 +78,22 @@
 }
 
 .itemButtons {
-     display: flex;
-     flex-direction: column;
-     background-color: var(--button-primary-dark-background);
-     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--button-primary-dark-background);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 .itemButtons button {
-     color: var(--button-primary-dark-text);
-     padding: var(--space-xs) var(--space-sm);
+  color: var(--button-primary-dark-text);
+  padding: var(--space-xs) var(--space-sm);
 }
 .itemButtons button:hover {
-     background-color: var(--button-primary-dark-hover);
+  background-color: var(--button-primary-dark-hover);
 }
 
 .basketTotal {
   display: flex;
   justify-content: space-between;
   border-top: 1px solid var(--color-base-dark);
+  padding: var(--space-md) 0;
 }
